@@ -72,15 +72,30 @@
 # 演習問題のpdf・解かれていない問題リスト・授業日一覧
 問題の訂正や休講・補講の情報をお知らせするので, こまめにホームページとCLEは確認してください.
 
-##演習問題のpdf
+## 演習問題のpdf
+ガイダンス資料と全ての演習問題をまとめました. 
 
-[演習問題pdf](https://github.com/masataka123/2023_winter_generaltopology/blob/master/material/0_集合と位相問題集.pdf)
+[演習問題pdf](https://masataka123.github.io/2023_winter_generaltopology/material/0_集合と位相問題集.pdf)
 
 (2023/10/03 注: CLEからこのページを見るとダウンロードできない可能性があります. その場合はhttps://masataka123.github.io/2023_winter_generaltopology/とリンクを打ってCLE外から見てください. )
 
+以下は訂正リストです. 間違いがあればこのファイルを訂正していきます.  
+
 ## 解かれていない問題リスト
 
-1.<u>残っている問題: 問.</u>
+1. <u>残っている問題: 問.</u>
+
+2. <u>残っている問題: 問.</u>
+
+3. <u>残っている問題: 問.</u>
+
+4. <u>残っている問題: 問.</u>
+
+5. <u>残っている問題: 問.</u>
+
+6. <u>残っている問題: 問.</u>
+
+1. <u>残っている問題: 問.</u>
 
 2. <u>残っている問題: 問.</u>
 
@@ -111,7 +126,10 @@
 - 第13回 (2024/01/16). 
 - 第14回 (2024/01/23). 
 - 第15回 (2024/01/30). 
+
+
 <!--
+
 - 第0回 (2023/10/03).  ガイダンス [ガイダンスの資料](https://github.com/masataka123/2023_winter_generaltopology/blob/master/material/0_ガイダンス資料.pdf)
 
 - 第1回 (2023/10/03).   ユークリッド空間と距離空間の復習 [第1回演習問題](https://github.com/masataka123/2023_winter_generaltopology/blob/master/material/0_ガイダンス資料.pdf)
@@ -146,12 +164,7 @@
 -->
 <!--
 [上の演習問題全てを集めたpdf](https://github.com/masataka123/2023_summer_complex/blob/master/material/0_複素解析続論_演習問題.pdf)
--->
 
-
-
-
-<!-- 
 [第8回から第12回授業の動画](https://www.youtube.com/playlist?list=PLZDOK-K3OuvDpXKHjdAxJUy5ts6HPCeoB)
 [第8回から第12回授業黒板](https://github.com/masataka123/2021_summer/blob/master/material/0_第八回から第十二回の授業黒板.pdf)
 [第8回から第12回授業の資料](https://github.com/masataka123/2021_summer/blob/master/material/0_第八回から第十二回の資料.pdf)
@@ -171,9 +184,9 @@
 # 集合と位相のまとめノート
 
 去年「内田伏一著 集合と位相」の第4章から第9章までまとめました. 自分用のノートですが共有いたします. 
-[PDF](https://masataka123.github.io/blog3/pdf/2023_07_26_PacificRim.pdf)
-[集合と位相のまとめノート](https://github.com/masataka123/2023_winter_generaltopology/material/0_集合と位相まとめ.pdf) 
-[集合と位相のまとめノート](https://github.com/masataka123/2023_winter_generaltopology/blob/master/material/0_集合と位相まとめ.pdf) 
+
+[集合と位相のまとめノート](https://masataka123.github.io/2023_winter_generaltopology/material/0_集合と位相まとめ.pdf) 
+
 
 ただ「森田茂之 著 集合と位相空間」と用語や表記が異なっております. このノートを参考にするのはやめておいた方がいいです. 
 
