@@ -1,0 +1,1549 @@
+\documentclass[dvipdfmx,a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[dvipdfmx]{hyperref} %リンクを有効にする
+\usepackage{url} %同上
+\usepackage{amsmath,amssymb} %もちろん
+\usepackage{amsfonts,amsthm,mathtools} %もちろん
+\usepackage{braket,physics} %あると便利なやつ
+\usepackage{bm} %ラプラシアンで使った
+\usepackage[top=30truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry} %余白設定
+\usepackage{latexsym} %ごくたまに必要になる
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\usepackage{otf} %宗教上の理由でmin10が嫌いなので
+
+
+\usepackage[all]{xy}
+\usepackage{amsthm,amsmath,amssymb,comment}
+\usepackage{amsmath}    % \UTF{00E6}\UTF{0095}°\UTF{00E5}\UTF{00AD}\UTF{00A6}\UTF{00E7}\UTF{0094}¨
+\usepackage{amssymb}  
+\usepackage{color}
+\usepackage{amscd}
+\usepackage{amsthm}  
+\usepackage{wrapfig}
+\usepackage{comment}	
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{pxrubrica}
+\usepackage{enumitem}
+\usepackage{mathrsfs} 
+\usepackage[dvipdfmx]{hyperref}
+\setstretch{1.2}
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}} 
+\newcommand{\Sin}{\text{Sin}^{-1}} 
+\newcommand{\Cos}{\text{Cos}^{-1}} 
+\newcommand{\Tan}{\text{Tan}^{-1}} 
+\newcommand{\invsin}{\text{Sin}^{-1}} 
+\newcommand{\invcos}{\text{Cos}^{-1}} 
+\newcommand{\invtan}{\text{Tan}^{-1}} 
+\newcommand{\Area}{\text{Area}}
+\newcommand{\vol}{\text{Vol}}
+\newcommand{\maru}[1]{\raise0.2ex\hbox{\textcircled{\tiny{#1}}}}
+\newcommand{\sgn}{{\rm sgn}}
+%\newcommand{\rank}{{\rm rank}}
+
+
+
+   %当然のようにやる．
+\allowdisplaybreaks[4]
+   %もちろん．
+%\title{第1回. 多変数の連続写像 (岩井雅崇, 2020/10/06)}
+%\author{岩井雅崇}
+%\date{2020/10/06}
+%ここまで今回の記事関係ない
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins, theorems}
+
+\theoremstyle{definition}
+\newtheorem{thm}{定理}
+\newtheorem{lem}[thm]{補題}
+\newtheorem{prop}[thm]{命題}
+\newtheorem{cor}[thm]{系}
+\newtheorem{claim}[thm]{主張}
+\newtheorem{dfn}[thm]{定義}
+\newtheorem{rem}[thm]{注意}
+\newtheorem{exa}[thm]{例}
+\newtheorem{conj}[thm]{予想}
+\newtheorem{prob}[thm]{問題}
+\newtheorem{rema}[thm]{補足}
+
+\DeclareMathOperator{\Ric}{Ric}
+\DeclareMathOperator{\Vol}{Vol}
+ \newcommand{\pdrv}[2]{\frac{\partial #1}{\partial #2}}
+ \newcommand{\drv}[2]{\frac{d #1}{d#2}}
+  \newcommand{\ppdrv}[3]{\frac{\partial #1}{\partial #2 \partial #3}}
+
+
+\title{集合と位相のまとめノート -内田本 4-9章の内容-}
+\author{岩井雅崇 (大阪大学)}
+\date{\today \, ver 1.00}
+%ここから本文．
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+%よくわかる図
+\begin{itemize}
+\item 位相空間の例などをまとめたサイト$\pi$-baseのリンク\url{https://topology.jdabbs.com}
+
+\item 位相空間の性質の関係を表した図
+ \begin{equation*}
+\xymatrix@C=25pt@R=20pt{
+\text{距離空間+可分} \ar@{=>}[d]  \ar@{=>}[r] & \text{第2可算公理}\ar@{=>}[rd]\ar@{=>}[d] & \text{距離空間+全有界}  \ar@{=>}[l]\\
+ \text{距離空間} \ar@{=>}[r]  &  \text{第1可算公理} &    \text{可分}  \\
+}
+\end{equation*}
+
+ \begin{equation*}
+\xymatrix@C=20pt@R=20pt{
+\text{距離空間}\ar@{=>}[rd]&\text{コンパクトハウスドルフ}\ar@{=>}[d]\ar@{=>}[r] & \text{局所コンパクトハウスドルフ}\ar@{=>}[d]& \\
+\text{$T_4$+第二加算}\ar@{=>}[u]^{\text{{\tiny 距離化定理}}}\ar@{=>}[r]&\text{$T_4$(正規ハウスドルフ)} \ar@{=>}[d] \ar@{=>}[r] &\text{$T_3$ (正則ハウスドルフ)}\ar@{=>}[d] \ar@{=>}[r]&\text{$T_2$ (ハウスドルフ)}\ar@{=>}[d] \\
+&\text{正規}& \text{正則}&  \text{$T_1$}\\
+&\text{正規+第二加算}\ar@{=>}[ru]\ar@{=>}[u]& & \\
+}
+\end{equation*}
+
+ \begin{equation*}
+\xymatrix@C=25pt@R=20pt{
+\text{連結+局所弧状連結}\ar@{=>}[r] \ar@{=>}[rd] &\text{弧状連結}   \ar@{=>}[r] & \text{連結} \\
+ &\text{局所弧状連結} \ar@{=>}[r]  &  \text{局所連結} 
+}
+\end{equation*}
+\end{itemize}
+\newpage
+
+\section{内田伏一 集合と位相 4章(\S12-\S14)}
+
+
+\subsection{距離空間の定義}
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+    \text{}
+    空でない集合$X$と実数値関数$d : X \times X \rightarrow \R$に関して, 次の条件を満たすとき$(X,d)$は\underline{距離空間}であるという.
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item 任意の$x,y \in X$について$d(x,y) \geqq 0$. $d(x,y)=0$であることと$x=y$は同値. 
+    \item 任意の$x,y \in X$について$d(x,y)=d(y,x)$.
+    \item 任意の$x,y,z \in X$について$d(x,z) \leqq d(x,y) + d(y,z)$. (三角不等式)
+    \end{enumerate}
+  \end{dfn}
+ \end{tcolorbox}
+ 
+ \begin{exa}
+ $n$を正の整数とし
+$d : \R^n \times \R^n \rightarrow \R$を$d(x,y) = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}$で定める. $(\R^n, d)$は距離空間となる. 
+ \end{exa}
+ \begin{exa}
+ $n$を正の整数とし
+$d' : \R^n \times \R^n \rightarrow \R$を$d'(x,y) = \max_{1\leqq i \leqq n}|x_i - y_i|$で定める. $(\R^n, d')$も距離空間となる. 
+ \end{exa}
+ \begin{exa}
+$[a,b]$を閉区間とし, 
+$$
+C[a,b]:= \{f | \text{ $f$ は$[a,b]$上の実数値連続関数} \}
+$$
+とし$f,g \in C[a,b]$について
+$$
+d(f,g) := \int_{a}^{b}|f(x) - g(x)| dx
+$$
+と定める. このとき$(C[a,b],d)$は距離空間となる.
+ \end{exa}
+ 
+ \subsection{距離空間の開集合と閉集合}
+ 距離空間$(X,d)$に関して次の用語を定義する.\footnote{外点, 境界点, 集積点, 孤立点は省略した. 正直あまり覚える意味はないと思う.}
+ \begin{itemize}
+ \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+ \item $a \in X$と正の数$\epsilon \in \R$について\underline{$a$の$\epsilon$近傍}を
+ $$
+ N(a,\epsilon) := \{ x \in X  | d(a,x) < \epsilon \} \text{とする.}
+ $$
+ \item \underline{$a \in X$が$A$の内点}であるとは, ある正の数$\epsilon \in \R$があって$ N(a,\epsilon) \subset A$となること. $A$の内部$A^i$(または$A^{\circ}$)を
+$$
+A^i := \{a \in X  | \text{$a \in X$が$A$の内点}\}  \text{とする.}
+$$
+\item \underline{$A$が開集合である}とは$A = A^i$となることとする.
+ \item \underline{$a \in X$が$A$の触点}であるとは, 任意の正の数$\epsilon \in \R$について$ N(a,\epsilon) \cap A \neq \varnothing$となること. $A$の閉包$\overline{A}$(または$A^a$)を
+$$
+\overline{A} := \{a \in X  | \text{$a \in X$が$A$の触点}\}  \text{とする.}
+$$
+\item \underline{$A$が開集合である}とは$A = \overline{A}$となることとする.
+ \end{itemize}
+ 
+\begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{prop}
+    \text{}
+    $(X,d)$を距離空間とし, $\mathscr{O}$を開集合全体の集合とする. このとき次が成り立つ.
+    \begin{enumerate}
+     \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $X \in \mathscr{O}, \varnothing \in \mathscr{O}$.
+    \item $O_1, \ldots, O_n \in \mathscr{O}$ならば$O_1 \cap \cdots \cap O_n \in \mathscr{O}$.
+    \item $\{ O_{\lambda} \}_{\lambda \in \Lambda }$を$\mathscr{O}$の元からなる集合系とすると$
+    \cup_{ \lambda \in \Lambda  }O_{\lambda} \in \mathscr{O}$
+    \end{enumerate}
+  \end{prop}
+ \end{tcolorbox}
+ 
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{prop}
+    \text{}
+ $(X,d)$を距離空間とし, $\mathfrak{A}$を閉集合全体の集合とする. このとき次が成り立つ.
+    \begin{enumerate}
+     \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $X \in \mathfrak{A}, \varnothing \in \mathfrak{A}$.
+    \item $A_1, \ldots, A_n \in \mathscr{O}$ならば$A_1 \cup \cdots \cup A_n \in \mathfrak{A}$.
+    \item $\{ A_{\lambda} \}_{\lambda \in \Lambda}$を$\mathfrak{A}$の元からなる集合系とすると
+    $\cap_{ \lambda \in \Lambda  }A_{\lambda} \in \mathfrak{A}$
+    \end{enumerate}
+  \end{prop}
+ \end{tcolorbox}
+ 
+ $(X,d)$を距離空間とし, $A$を$X$の空でない部分集合とする.
+ \underline{$x \in X$の集合$A$の距離}を
+ $$
+ d(x,A) = \inf \{ d(x,a) | x \in A\} \text{で定める.}
+ $$
+ 
+  \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{prop}
+    \text{}
+    \begin{enumerate}
+     \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $|d(x,A) - d(y,A)| \leqq d(x,y)$.
+    \item $\overline{A} = \{ x \in X | d(x,A)=0\}$.
+    \item $A^i =  \{ x \in X | d(x,A^{c})>0\}$.
+    \end{enumerate}
+  \end{prop}
+ \end{tcolorbox}
+ 
+ \subsection{距離空間の近傍系}
+ 
+ 
+  \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+    \text{}
+$(X,d)$を距離空間とする. $X$の部分集合\underline{$U$が点$a \in X$の近傍}とは$a$が$U$の内点であることとする.
+$$
+\mathfrak{N}(a) = \{ U \subset X | \text{$U$は$a$の近傍} \}
+$$
+を\underline{点$a$の近傍系}という.
+  \end{dfn}
+ \end{tcolorbox}
+ 
+ \begin{exa}
+ $\R$にユークリッド距離を入れたものを考える. 
+ $0 \in \R$について$(-1,1)$や$(-1,1]$, $\Q \cup (-1,1)$などは$0$の近傍である. (特に近傍は開集合であるとは限らない.)
+ 一方で$\Q$は$0$の近傍ではない.
+ \end{exa}
+
+ 
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{prop}
+    \text{}
+    \begin{enumerate}
+     \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $a \in X$ならば$X \in \mathfrak{N}(a)$. $U \in \mathfrak{N}(a)$ならば$a \in U$
+    \item $U_1, U_2 \in \mathfrak{N}(a)$ならば$U_1 \cap U_2 \in \mathfrak{N}(a)$.
+    \item $U \in \mathfrak{N}(a)$かつ$U \subset V \subset X$ならば$V  \in \mathfrak{N}(a)$
+    \item 任意の$U \in \mathfrak{N}(a)$について, ある$V \in \mathfrak{N}(a)$があって, 任意の$b \in V$について$U \in \mathfrak{N}(b)$.
+    \end{enumerate}
+  \end{prop}
+ \end{tcolorbox}
+ 
+ \subsection{連続写像}
+ 
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+    \text{}
+距離空間の間の写像$f : (X, d_X) \rightarrow (Y, d_Y)$が\underline{点$a \in X$で連続}とは
+任意の$\epsilon>0$についてある$\delta >0$が存在し, $d_X(x,a) < \delta$ならば$d_Y(f(x),f(a)) < \epsilon$であることとする.
+  \end{dfn}
+ \end{tcolorbox}
+  \begin{exa}
+  $d$を$\R$のユークリッド距離とし, $f : \R \rightarrow \R$を写像とするとき, $f$が(上の意味で)点$a \in \R$で連続であることは「任意の$a \in \R$と任意の$\epsilon>0$についてある$\delta >0$が存在し, $|x-a| < \delta$ならば$|f(x)- f(a)| < \epsilon$」($\epsilon-\delta$論法)と同じである. つまり$\epsilon-\delta$論法を距離空間に拡張したことになる.
+ \end{exa}
+ 
+ \begin{rem}
+距離空間の間の写像$f : (X, d_X) \rightarrow (Y, d_Y)$について次は同値である.
+ \begin{enumerate}
+  \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+ \item 点$a \in X$で連続.
+ \item 任意の$\epsilon>0$についてある$\delta >0$が存在し, $f^{-1}(N(f(a), \epsilon))$が$a$の近傍である.
+ \item 任意の$V\in \mathfrak{N}(f(a))$について$f^{-1}(V) \in \mathfrak{N}(f(a))$.
+ \end{enumerate}
+ \end{rem}
+
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{prop}
+    距離空間の間の写像$f : (X, d_X) \rightarrow (Y, d_Y)$について次は同値である
+    \begin{enumerate}
+     \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $f$は$X$の各点で連続.
+    \item $Y$の任意の開集合$V$について$f^{-1}(V)$は開集合.
+    \item  $Y$の任意の閉集合$F$について$f^{-1}(F)$は閉集合.
+    \item 任意の部分集合$A \subset X$について, $f(\overline{A}) \subset \overline{f(A)}$.
+    \end{enumerate}
+   上が成り立つとき$f : (X, d_X) \rightarrow (Y, d_Y)$は\underline{連続である}という.
+  \end{prop}
+ \end{tcolorbox}
+
+\newpage
+
+\section{内田伏一 集合と位相 5章(\S15-\S17)}
+
+
+\subsection{位相空間の定義}
+以下空でない集合$X$について$\mathfrak{P}(X)$を冪集合(集合の集合)とする.
+\begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{prop}
+    \text{}
+    空でない集合$X$について, $X$の部分集合の族$\mathscr{O} \subset \mathfrak{P}(X)$が次を満たすとき\underline{$\mathscr{O} $は$X$の位相}であるという.
+     \begin{enumerate}
+      \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $X \in \mathscr{O}, \varnothing \in \mathscr{O}$.
+    \item $O_1, \ldots, O_n \in \mathscr{O}$ならば$O_1 \cap \cdots \cap O_n \in \mathscr{O}$.
+    \item $\{ O_{\lambda} \}_{\lambda \in \Lambda }$を$\mathscr{O}$の元からなる集合系とすると$
+    \cup_{ \lambda \in \Lambda  }O_{\lambda} \in \mathscr{O}$
+    \end{enumerate}
+$(X, \mathscr{O})$を\underline{位相空間}といい, $\mathscr{O}$の元を\underline{開集合}という.
+  \end{prop}
+ \end{tcolorbox}
+ \begin{exa}
+ 以下$X$を空でない集合とする.
+ \begin{enumerate}
+ \item $\mathscr{O}=\mathfrak{P}(X)$とすると$(X, \mathscr{O})$は位相空間になる. \underline{離散位相}と呼ばれる.
+ \item $\mathscr{O}=\{X, \varnothing \}$とすると$(X, \mathscr{O})$は位相空間になる. \underline{密着位相}と呼ばれる.
+ \item $(X,d)$を距離空間とし, 内田4章のように開集合の集合$\mathscr{O}_d$を定めると, $(X, \mathscr{O}_d)$は位相空間になる. \underline{距離位相}と呼ばれる.
+ \item 位相空間$(X, \mathscr{O})$と部分集合$A \subset X$について
+ $
+ \mathscr{O}_A = \{ U \cap A | U \in \mathscr{O}\}
+ $
+ とすると, $(A,  \mathscr{O}_A)$は位相空間になる. \underline{相対位相}と呼ばれる.
+ $(A,  \mathscr{O}_A)$は$(X, \mathscr{O})$の\underline{部分空間}という.
+ \end{enumerate}
+  \end{exa}
+
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+    $X$の部分集合$A$が位相空間$(X, \mathscr{O} )$の閉集合であるとは$A^c \in \mathscr{O} $であることとする.
+  \end{dfn}
+ \end{tcolorbox}
+ 
+\begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{prop}
+    \text{}
+$\mathfrak{A}$を位相空間$(X, \mathscr{O} )$の閉集合全体の集合とする. このとき次が成り立つ.
+    \begin{enumerate}
+     \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $X \in \mathfrak{A}, \varnothing \in \mathfrak{A}$.
+    \item $A_1, \ldots, A_n \in \mathscr{O}$ならば$A_1 \cup \cdots \cup A_n \in \mathfrak{A}$.
+    \item $\{ A_{\lambda} \}_{\lambda \in \Lambda}$を$\mathfrak{A}$の元からなる集合系とすると
+    $\cap_{ \lambda \in \Lambda  }A_{\lambda} \in \mathfrak{A}$
+    \end{enumerate}
+逆に$X$の部分集合の族$\mathfrak{A}'$が上の(1)-(3)を満たすとき
+ $$
+ \mathscr{O}' = \{ V | V^c \in \mathfrak{A}'\}
+ $$
+ とおけば$(X, \mathscr{O}')$は位相空間になる.
+  \end{prop}
+ \end{tcolorbox}
+ 
+\subsection{開核作用子・閉包作用子}
+\begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+$(X, \mathscr{O} )$を位相空間とし, $A \subset X$を部分集合とする.
+\begin{enumerate}
+\item \underline{$A$の内部}を$A$に含まれる最大の開集合とし, $A^i$または$A^{\circ}$と表す. $a \in A^i$を\underline{$A$の内点}と呼ぶ.
+    $$
+\begin{array}{cccc}
+i: &\mathfrak{P}(X)& \rightarrow & \mathfrak{P}(X)  \\
+&A& \longmapsto & A^i
+\end{array}
+$$
+を\underline{開核作用子}と呼ぶ.
+\item \underline{$A$の閉包}を$A$を含む最小の閉集合とし, $\overline{A}$または$A^{a}$と表す. $a \in \overline{A}$を\underline{$A$の触点}と呼ぶ.
+    $$
+\begin{array}{cccc}
+i: &\mathfrak{P}(X)& \rightarrow & \mathfrak{P}(X)  \\
+&A& \longmapsto & \overline{A}
+\end{array}
+$$
+を\underline{閉包作用子}と呼ぶ.
+\end{enumerate}
+
+  \end{dfn}
+ \end{tcolorbox}
+ 定義から$A^i \subset A \subset \overline{A}$である.
+ 
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+    \text{}
+$i: \mathfrak{P}(X) \rightarrow \mathfrak{P}(X)$を位相空間$(X, \mathscr{O} )$の開核作用子とするとき次が成り立つ.
+    \begin{enumerate}
+     \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $i(X)=X $
+    \item $i(A) \subset A$
+    \item $i(A \cap B) =i(A) \cap i(B)$
+    \item $i(i(A)) =i(A)$
+    \end{enumerate}
+逆に$i': \mathfrak{P}(X) \rightarrow \mathfrak{P}(X)$が(1)-(4)を満たすとき, $X$上にある位相$\mathscr{O}'$があって$i'$は$(X, \mathscr{O}')$の開核作用子となる.
+  \end{thm}
+ \end{tcolorbox}
+ 後半の主張の証明としては$ \mathscr{O}' = \{ V\subset X | i'(V)=V\}$とおけばよい.
+ 
+  \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}[クラトウスキイの公理系]
+    \text{}
+$k: \mathfrak{P}(X) \rightarrow \mathfrak{P}(X)$を位相空間$(X, \mathscr{O} )$閉包作用子とするとき次が成り立つ.
+    \begin{enumerate}
+     \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $k(X)=X $
+    \item $A\subset k(A)$
+    \item $k(A \cup B) =k(A) \cup k(B)$
+    \item $k(k(A)) =k(A)$
+    \end{enumerate}
+逆に$k': \mathfrak{P}(X) \rightarrow \mathfrak{P}(X)$が(1)-(4)を満たすとき, $X$上にある位相$\mathscr{O}'$があって$k'$は$(X, \mathscr{O}')$の開核作用子となる.
+  \end{thm}
+ \end{tcolorbox}
+ 後半の主張の証明としては$ \mathscr{O}' = \{ V \subset X | k(V^c)=V^c\}$とおけばよい($V^c$が閉集合である).
+
+\subsection{近傍系}
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+$(X, \mathscr{O} )$を位相空間とし, $a \in X$とする．
+\begin{enumerate}
+\item \underline{$N \subset X$が$a$の近傍}であるとは, $a$が$N$の内点(つまり$a \in N^i$)となることとする.
+$$
+\mathfrak{N}(a) = \{N \subset X | \text{$N$が$a$の近傍}\}
+$$
+を$a$の\underline{近傍系}という.
+\item $V \in \mathfrak{N}(a)$が開集合のとき, $V$は\underline{開近傍}という.
+\end{enumerate}
+  \end{dfn}
+ \end{tcolorbox}
+ 
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}[ハウスドルフの公理系]
+    \text{}
+位相空間$(X, \mathscr{O} )$について, 次の写像を考える.
+   $$
+\begin{array}{cccc}
+h : &X& \rightarrow & \mathfrak{P}(\mathfrak{P}(X))  \\
+&a& \longmapsto &\mathfrak{N}(a)
+\end{array}
+$$
+このとき次が成り立つ.
+    \begin{enumerate}
+     \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item 任意の$a \in X$について$X \in h(a)$. $U \in h(a)$ならば$a \in U$.
+    \item $U_1, U_2 \in h(a)$ならば$U_1 \cap U_2 \in h(a)$.
+    \item $U \in h(a)$かつ$U \subset V$ならば$V \in h(a)$.
+    \item 任意の$U \in h(a)$についてある$V \in h(a)$があって, 任意の$b \in V$について$U \in h(b)$.
+    \end{enumerate}
+逆に$h':X \rightarrow \mathfrak{P}(\mathfrak{P}(X)) $が(1)-(4)を満たすとき, $X$上にある位相$\mathscr{O}'$があって任意の$a\in X$について$h'(a)$は$(X, \mathscr{O}')$における近傍系$\mathfrak{N}(a) $に一致する.
+  \end{thm}
+ \end{tcolorbox}
+ 後半の主張の証明としては$ \mathscr{O}' = \{ V\subset X | \text{任意の$a \in V$について$V \in h(a)$}  \}$とおけば良い.
+
+\subsection{連続写像}
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+$(X, \mathscr{O}_X )$, $(Y, \mathscr{O}_Y)$を位相空間とし, $f : X \rightarrow Y$を写像とする.
+\underline{$f$が点$a \in X$で連続}とは任意の$f(a)$の近傍$N \in \mathfrak{N}(f(a))$について$f^{-1}(N) \in  \mathfrak{N}(a)$となること.
+  \end{dfn}
+ \end{tcolorbox}
+ 
+ 
+    \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+    \text{}
+$(X, \mathscr{O}_X )$, $(Y, \mathscr{O}_Y)$を位相空間とし, $f : X \rightarrow Y$を写像とする. 次は同値である.
+    \begin{enumerate}
+     \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item 任意の$a \in X$について$f$は連続
+    \item 任意の$Y$の開集合$V \subset Y$について, $f^{-1}(V) \subset X$は$X$の開集合である.
+    \item 任意の$Y$の閉集合$F \subset Y$について, $f^{-1}(F) \subset X$は$X$の閉集合である.
+    \item 任意の$X$の部分集合$A \subset X$について, $f(\overline{A}) \subset \overline{f(A)}$.
+    \end{enumerate}
+   \end{thm}
+ 上の(1)-(4)のいずれかが成り立つとき, $f$は$(X, \mathscr{O}_X )$から$(Y, \mathscr{O}_Y)$への\underline{連続写像}という.
+ \end{tcolorbox}
+ 
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+$(X, \mathscr{O}_X )$, $(Y, \mathscr{O}_Y)$を位相空間とする. 写像$f : X \rightarrow Y$が\underline{同相写像}とは$f$が全単射であり, $f$と$f^{-1}$が共に連続写像であることとする.
+$f : X \rightarrow Y$が同相写像であるとき, \underline{$X$と$Y$は同相}という.
+  \end{dfn}
+ \end{tcolorbox}
+ 
+ \subsection{開基}
+ 
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+$(X, \mathscr{O})$を位相空間とする. $\mathscr{B} \subset \mathscr{O}$が\underline{$\mathscr{O}$の開基}であるとは, 任意の$V \in \mathscr{O}$について, ある$\mathscr{B}_{V} \subset \mathscr{B}$があって$\cup_{B \in \mathscr{B}_{V}}B =V$となることとする.
+  \end{dfn}
+ \end{tcolorbox}
+$\mathscr{B}$が$\mathscr{O}$の開基であることは, 任意の$V \in \mathscr{O}$と任意の$x \in V$について, ある$B \in \mathscr{B}$があって$x \in B$かつ$B \subset V$が成り立つことと同じである. 
+
+\begin{exa}
+$(X, \mathscr{O})$を位相空間とする.
+\begin{enumerate}
+\item$\mathscr{O}$は$\mathscr{O}$の開基である.
+\item$\mathscr{O}$が離散位相($\mathscr{O} = \mathfrak{P}(X)$)のとき, $\mathscr{B}=\{ \{x\}  | x \in X\}$は$\mathscr{O}$の開基である.
+\item $(X,d)$距離空間に関して
+$\mathscr{B} = \{ N(a,\epsilon) | a \in X, \epsilon >0\}
+$は開基となる.
+\end{enumerate}
+\end{exa}
+
+\begin{rem}
+位相空間$(X, \mathscr{O})$に対して, 開基は一つとは限らない. 例えば$\mathscr{O}$が離散位相のとき上の例から開基の取り方は複数あることがわかる.
+\end{rem}
+
+    \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+    \label{kaiki}
+空でない集合$X$と$\mathscr{B} \subset \mathfrak{P}(X)$を次の条件を満たす部分集合族とする.
+\begin{enumerate}
+ \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item $X = \cup_{B \in \mathscr{B} }B$
+\item $B_1, B_2\in \mathscr{B} $かつ$x \in B_1\cap B_2$ならば, ある$B \in \mathscr{B}$があって$x\in B$かつ$B \subset B_1\cap B_2$となる.
+\end{enumerate}
+このとき$\mathscr{B}$を開基とする$X$上の位相$\mathscr{O}$がただ一つ存在する.
+\end{thm}
+ \end{tcolorbox}
+証明としては$ \mathscr{O} = \{ V\subset X | \text{ある$\mathscr{A} \subset \mathscr{B}$があって$V=\cup_{A \in \mathscr{A}}A$}  \}$とおけば良い.
+
+
+
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+$(X, \mathscr{O})$を位相空間とする. $\mathscr{S} \subset \mathscr{O}$が\underline{$\mathscr{O}$の準開基}であるとは, 任意の$V \in \mathscr{O}$と任意の$x \in V$について, ある$N_1, \ldots, N_{r} \in \mathscr{S} $があって$x \in N_1 \cap \cdots \cap N_{r}$かつ$N_1 \cap \cdots \cap N_{r} \subset V$となることとする.
+  \end{dfn}
+ \end{tcolorbox}
+ 関係としては
+ \begin{equation*}
+\xymatrix@C=20pt@R=20pt{
+\text{準開基} \ar@{=>}[r] &    \text{開基}  
+}
+\end{equation*}
+が成り立つ. 逆は成り立たない.
+
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+空でない集合$X$について$\mathscr{S}$を部分集合族$\mathscr{S} \subset \mathfrak{P}(X)$とする.
+このとき$\mathscr{S}$を準開基とする$X$上の位相$\mathscr{O}$がただ一つ存在する.
+この位相を\underline{$\mathscr{S}$によって生成される位相}という．
+\end{thm}
+ \end{tcolorbox}
+証明としては$ \mathscr{B} = \{ V\subset X | \text{ある有限部分集合$\mathscr{A} \subset \mathscr{S}$があって$V=\cap_{A \in \mathscr{A}}A$}  \}$とおけば, $ \mathscr{B}$が開基となるので, 定理\ref{kaiki}によりいえる.
+
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+$X$を空でない集合とし, $\mathscr{O}_1, \mathscr{O}_2$を$X$の位相とする.
+$\mathscr{O}_1 \subset \mathscr{O}_2$であるとき, \underline{$\mathscr{O}_1$は$\mathscr{O}_2$より小さい位相}であるといい, \underline{$\mathscr{O}_2$は$\mathscr{O}_1$より大きい位相}であるという.
+  \end{dfn}
+ \end{tcolorbox}
+ \begin{exa}
+ 密着位相は一番小さい位相であり, 離散位相は一番大きな位相である.
+ \end{exa}
+
+ \subsection{基本近傍系・可算公理}
+  \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+$(X, \mathscr{O})$を位相空間とし$x\in X$とする.
+$\mathfrak{B}(x) \subset \mathfrak{N}(x) $が\underline{$x$の基本近傍系}であるとは, 任意の$N \in \mathfrak{N}(x)$についてある$U \in \mathfrak{B}(x)$があって$U \subset N$となることとする.
+  \end{dfn}
+ \end{tcolorbox}
+ \begin{exa}
+$(X, \mathscr{O})$を位相空間とし$x\in X$とする. $x$の開近傍全体の集合は$x$の基本近傍系となる.
+ \end{exa}
+  \begin{exa}
+$(X, d)$を距離空間とし$\mathscr{O}$を距離から定まる位相とする.
+$$
+\mathfrak{B}(x) = \{ N(a,\epsilon) | a \in X, \epsilon >0, \epsilon \in \Q\}
+$$
+は$x$の基本近傍系となる. 
+また
+$$
+\mathfrak{B}(x) =\left\{ N\left(a,\frac{1}{n}\right) | a \in X, n\in \N \right\}
+$$
+も$x$の基本近傍系となる. 特に基本近傍系は唯一とは限らない.
+ \end{exa}
+
+ 
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+$(X, \mathscr{O})$を位相空間とする.
+\begin{enumerate}
+\item $(X, \mathscr{O})$が\underline{第1可算公理}を満たすとは, 任意の$x \in X$が高々加算個の近傍からなる基本近傍系$\mathfrak{B}(x)$を持つこととする.
+\item $(X, \mathscr{O})$が\underline{第2可算公理}を満たすとは, 高々加算個の開基を持つこととする.
+\item $A \subset X$が稠密であるとは$\overline{A} = X$となること.
+\item $(X, \mathscr{O})$が\underline{可分}であるとは, 稠密な高々加算集合$A$を持つこと.
+\end{enumerate}
+  \end{dfn}
+ \end{tcolorbox}
+関係としては
+ \begin{equation*}
+\xymatrix@C=25pt@R=20pt{
+\text{距離空間+可分} \ar@{=>}[d]  \ar@{=>}[r] & \text{第2可算公理}\ar@{=>}[rd]\ar@{=>}[d] &   \\
+ \text{距離空間} \ar@{=>}[r]  &  \text{第1可算公理} &    \text{可分}  
+}
+\end{equation*}
+が成り立つ. 逆は成り立たない.
+
+\begin{exa}
+また位相空間$(X, \mathscr{O})$について部分集合$A \subset X$に相対位相を入れる.
+$X$が第1可算公理を満たすなら$A$も第1可算公理を満たす. これは第2可算公理でも同じである.
+ただし$X$が可分でも$A$は可分とは限らない.
+\end{exa}
+
+\newpage
+
+
+\section{内田伏一 集合と位相 6章(\S19-\S20)}
+
+
+\subsection{積位相}
+\begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+$(X, \mathscr{O}_X )$, $(Y, \mathscr{O}_Y)$を位相空間とする.
+$$
+\mathscr{B} = \{ V \times W | V \in \mathscr{O}_X, W \in \mathscr{O}_Y\}
+$$
+を開基とする位相を\underline{$X \times Y$の積位相}といい$\mathscr{O}_X \# \mathscr{O}_Y$と表す.
+位相空間$(X \times Y, \mathscr{O}_X \# \mathscr{O}_Y)$を\underline{積空間}といい$(X, \mathscr{O}_X ) \times (Y, \mathscr{O}_Y)$と表す.
+  \end{dfn}
+ \end{tcolorbox}
+ 同様に$n$個の積空間$(X_1, \mathscr{O}_{X_1} ) \times \cdots \times (X_n, \mathscr{O}_{X_n} )$も上と同様に定義する.
+ 
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+$(X_1, \mathscr{O}_{X_1} ) , \ldots ,(X_n, \mathscr{O}_{X_n} )$を位相空間とする.
+このとき積位相$\mathscr{O}_{X_1} \# \cdots \# \mathscr{O}_{X_n}$は各射影$p_i : X_1\times \cdots \times X_n \rightarrow X_i$が連続写像となるような位相の中で最小の位相である.
+  \end{thm}
+ \end{tcolorbox}
+ 
+ \begin{exa}
+ $\mathscr{O}_n, \mathscr{O}_m$を$\R^n,\R^m$のユークリッド位相とする. $\R^n \times \R^m $と$\R^{n+m}$を同一視すれば, $\mathscr{O}_n$と$\mathscr{O}_m$の積位相$\mathscr{O}_n \#\mathscr{O}_m$が$\mathscr{O}_{n+m}$である.
+ \end{exa}
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+$\{ X_\lambda \}_{\lambda \in \Lambda}$を集合系とする.
+\begin{enumerate}
+ \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item $f : \Lambda \rightarrow \cup_{\lambda \in \Lambda} X_\lambda $が\underline{選択関数}とは任意の$\lambda \in \Lambda$について$f(\lambda) \in X_{\lambda}$となることとする. $x_{\lambda} = f(\lambda)$として選択関数$f$を$\{ x_{\lambda}\}_{ \lambda \in \Lambda}$と表す
+$$
+\prod_{\lambda \in \Lambda}X_{\lambda} := \{ f=\{ x_{\lambda}\}_{ \lambda \in \Lambda} : \Lambda \rightarrow \cup_{\lambda \in \Lambda} X_\lambda | \text{$f$が\underline{選択関数}}\}
+$$
+を\underline{$\{ X_\lambda \}_{\lambda \in \Lambda}$の直積}という.
+%選択関数$f$を$x_{\lambda} = f(\lambda)$と表す ここで$\{ x_{\lambda}\}_{ \lambda \in \Lmanbda}$ともかく.ここで$x_{\lambda} = f(\lambda)$と定める
+\item 直積$\prod_{\lambda \in \Lambda}X_{\lambda}$と$\mu \in \Lambda$について
+ $$
+\begin{array}{cccc}
+p_{\mu} : &\prod_{\lambda \in \Lambda}X_{\lambda}& \rightarrow & X_{\mu}  \\
+& \{ x_{\lambda}\}_{ \lambda \in \Lambda} & \longmapsto &x_{\mu}
+\end{array}
+$$
+と定める. \underline{$p_{\mu}$を$\prod_{\lambda \in \Lambda}X_{\lambda}$から$X_{\mu}$への射影}という
+\item $\mathscr{O}_{\lambda}$を$X_{\lambda}$の位相とする.
+$$
+\mathscr{S} = \{ p_{\lambda}^{-1}(V_{\lambda}) | V_\lambda \in \mathscr{O}_{\lambda}, \lambda \in \Lambda\}
+$$
+によって生成される位相を\underline{積位相}と呼び$\#_{\lambda \in \Lambda}\mathscr{O}_{\lambda} $と表す.
+$(\prod_{\lambda \in \Lambda}X_{\lambda},\#_{\lambda \in \Lambda}\mathscr{O}_{\lambda} )$を積空間といい
+$\prod_{\lambda \in \Lambda} (X_{\lambda},\mathscr{O}_{\lambda} )$で表す.
+\end{enumerate}
+  \end{dfn}
+ \end{tcolorbox}
+ 
+  \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+$(X_{\lambda},\mathscr{O}_{\lambda} )$を位相空間系とする.
+
+\begin{enumerate}
+ \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item 積位相$\#_{\lambda \in \Lambda}\mathscr{O}_{\lambda} $は各射影$p_\mu : \prod_{\lambda \in \Lambda}X_{\lambda}\rightarrow X_{\mu} $が連続写像となるような位相の中で最小の位相である.
+\item $(Y, \mathscr{O}_Y)$を位相空間とする. $f : \rightarrow \prod_{\lambda \in \Lambda}X_{\lambda}$が積位相に関して連続であることは任意の$\mu \in \Lambda$について$p_{\mu} \circ f : Y \rightarrow X_{\mu}$が連続であることと同値である.
+\end{enumerate}
+  \end{thm}
+ \end{tcolorbox}
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+位相空間$(X, \mathscr{O}_X )$, $(Y, \mathscr{O}_Y)$とし$f : X \rightarrow Y$を写像とする.
+\begin{enumerate}
+\item \underline{$f$が開写像}とは任意の$X$の開集合$U \subset X$について$f(U)$が$Y$の開集合となること.
+\item\underline{$f$が閉写像}とは任意の$X$の閉集合$F\subset X$について$f(F)$が$Y$の閉集合となること.
+\end{enumerate}
+
+  \end{dfn}
+ \end{tcolorbox}
+ 
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+$(X_{\lambda},\mathscr{O}_{\lambda} )$を位相空間系とすると, 射影$p_\mu : \prod_{\lambda \in \Lambda}X_{\lambda}\rightarrow X_{\mu} $は開写像である.
+  \end{thm}
+ \end{tcolorbox}
+ \begin{exa}
+ 射影$p_\mu : \prod_{\lambda \in \Lambda}X_{\lambda}\rightarrow X_{\mu} $は閉写像とは限らない.
+ $$
+ A := \{ (x,y) \in \R^2 | xy=1\}
+ $$
+ は$\R^2$の閉集合であるが第一射影$p_1$をとると$p_1(A) = \R \setminus \{0\}$より閉集合ではない.
+ \end{exa}
+
+ \subsection{商位相}
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+位相空間$(X, \mathscr{O}_X )$とし$f : X \rightarrow Y$を全射な写像とする.
+
+\begin{enumerate}
+\item $$
+\mathscr{O}(f) := \{ V \subset Y | f^{-1}(V) \in \mathscr{O}_X \}
+$$
+を\underline{$f$によって定める$Y$の商位相}といい\underline{$(Y,\mathscr{O}(f))$を商空間}という. 
+\item $\mathscr{O}_Y$を$Y$の位相とし, $f : X \rightarrow Y$が$(X, \mathscr{O}_X )$から$(Y, \mathscr{O}_Y )$への連続写像とする. $f$が\underline{商写像(等化写像)}とは$\mathscr{O}_Y  = \mathscr{O}(f)$となること.
+\end{enumerate}
+  \end{dfn}
+ \end{tcolorbox}
+\begin{exa}
+位相空間$(X, \mathscr{O}_X )$上の同値関係$\sigma$を考える. $\pi : X \rightarrow X/\sigma$によって$X/\sigma$に位相を与えることができる. その位相による商空間$(X/\sigma,\mathscr{O}(\pi))$を\underline{等化空間}ともいう.
+\end{exa}
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+$f : X \rightarrow Y$を位相空間$(X, \mathscr{O}_X )$から$(Y, \mathscr{O}_Y )$への連続写像とする. 
+$f$が全射であり, 開写像(または閉写像)であるならば$f$は商写像である.
+  \end{thm}
+ \end{tcolorbox}
+ 
+    \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+$\pi : X \rightarrow Y$を商写像とし$g : Y\rightarrow Z$を写像とする.
+$g \circ \pi : X \rightarrow Z$が連続ならば$g$は連続である.
+
+ 
+  \begin{equation*}
+\xymatrix@C=25pt@R=20pt{
+X\ar@{->}[d]_{g \circ \pi}  \ar@{->}[r]^{\pi} & Y \ar@{->}[ld]^{g}  \\
+Z & 
+ }
+\end{equation*}
+  \end{thm}
+ \end{tcolorbox}
+
+\newpage
+
+
+\section{内田伏一 集合と位相 7章(\S21-\S27)}
+
+
+\subsection{分離公理}
+
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+位相空間$(X, \mathscr{O})$とする．
+
+\begin{enumerate}
+\item $X$が\underline{$T_1$空間}であるとは, 任意の$a.b \in X$についてある$U \in \mathscr{O}$があって$a \in U$かつ$b \not \in U$となること.
+\item $X$が\underline{$T_2$空間またはハウスドルフ空間}であるとは, 任意の$a, b \in X$について, ある$U, V \in \mathscr{O}$があって$a \in U, b \in V, U \cap V = \varnothing $となること.
+\item $X$が\underline{正則空間}であるとは, 任意の$a\in X$と$a$を含まない閉集合$B$について, , ある$U, V \in \mathscr{O}$があって$a \in U, B \subset V, U \cap V = \varnothing $となること.
+\item $X$が\underline{$T_3$空間}とは$X$が正則空間で$T_1$空間なること.
+\item $X$が\underline{正規空間}とは, 互いに交わらない閉集合$A,B$について, ある$U, V \in \mathscr{O}$があって$A \subset U, B \subset V, U \cap V = \varnothing $となること.
+\item $X$が\underline{$T_4$空間}とは$X$が正規空間で$T_1$空間なること.
+\end{enumerate}
+  \end{dfn}
+ \end{tcolorbox}
+ 
+ 関係としては
+ \begin{equation*}
+\xymatrix@C=25pt@R=20pt{
+\text{距離空間}\ar@{=>}[d] && &\\
+\text{$T_4$(正規ハウスドルフ)} \ar@{=>}[d] \ar@{=>}[r] &\text{$T_3$ (正則ハウスドルフ)}\ar@{=>}[d] \ar@{=>}[r]&\text{$T_2$ (ハウスドルフ)}\ar@{=>}[r] &\text{$T_1$} \\
+\text{正規}& \text{正則}& &\\
+}
+\end{equation*}
+が成り立つ. 逆は成り立たない.
+\begin{rem}
+文献によって「$T_4$を正規空間とする」ことがあったり「$T_4$を(内田本の意味での)正規とする」こともあるので注意.
+\end{rem}
+
+
+    \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+    位相空間$(X, \mathscr{O})$について以下は同値.
+    \begin{enumerate}
+     \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $X$はハウスドルフ($T_2$)である.
+    \item 対角線集合$\Delta = \{ (x,x) | x \in X\}$は$(X, \mathscr{O}) \times (X, \mathscr{O})$上で閉集合である.
+    \item 任意の$x \in X$について$x$の閉近傍(閉集合でその内部が$x$を含むもの)の共通部分集合は$\{ x\}$である.
+    \end{enumerate}
+  \end{thm}
+ \end{tcolorbox}
+
+  \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+    位相空間$(X, \mathscr{O})$について以下は同値.
+    \begin{enumerate}
+     \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $X$は正則空間である.
+    \item 任意の$x \in X$について$x$の閉近傍全体の集合が基本近傍系となる.
+    \end{enumerate}
+  \end{thm}
+ \end{tcolorbox}
+
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+    位相空間$(X, \mathscr{O})$について以下は同値.
+    \begin{enumerate}
+     \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $X$は正規空間である.
+    \item 閉集合$F$と開集合$U$について$F \subset U$ならばある開集合$V$があって$F \subset V \subset \overline{V} \subset G$となるものが存在する.
+    \end{enumerate}
+  \end{thm}
+ \end{tcolorbox}
+ 
+ \subsection{ウリゾーンの補題と距離化定理.}
+  \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}[ティーツェの拡張定理]
+    位相空間$(X, \mathscr{O})$を正規空間とし, $A \subset X$を閉集合とする.
+     任意の$A$上の連続関数$f : \rightarrow \R$についてある連続関数$F : X\rightarrow \R$が存在して$F|_{A} =f$となる.
+  \end{thm}
+ \end{tcolorbox}
+
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}[ウリゾーンの補題]
+    位相空間$(X, \mathscr{O})$を正規空間とする.
+    $A, B$を互いに交わらない閉集合とするとき, ある連続関数$f : X\rightarrow \R$で$f(X) \subset [0,1], f(A)=\{0\}, f(B)=\{1\}$となるものが存在する
+  \end{thm}
+ \end{tcolorbox}
+ 
+    \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}[ウリゾーンの距離化定理]
+第2加算公理を満たす正規ハウスドルフ空間は距離化可能である.
+  \end{thm}
+ \end{tcolorbox}
+ 
+  
+    \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+第2加算公理を満たす正規空間は正則である.
+  \end{thm}
+ \end{tcolorbox}
+ 
+ \subsection{コンパクト}
+ 
+  \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+    $(X, \mathscr{O})$を位相空間とする.
+    \begin{enumerate}
+    \item \underline{集合族$\mathfrak{G} \subset \mathfrak{P}(X)$が部分集合$A \subset X$を被覆する}とは$A \subset \cup_{V \in \mathfrak{G}}V$となることである. 特に$\mathfrak{G} $が開集合族のとき, $\mathfrak{G}$は$A$の\underline{開被覆}という
+    \item 部分集合$A \subset X$が\underline{コンパクト}であるとは, 任意の$A$の開被覆$\mathfrak{G} \subset \mathscr{O}$について, ある有限個の元$V_1, \ldots, V_l \in \mathfrak{G}$があって$A \subset \cup_{i=1}^{l} V_i$となること.
+    \end{enumerate}
+  \end{dfn}
+ \end{tcolorbox}
+ \begin{exa}
+$\R^n$上の部分集合$A \subset \R^n$について$A$がコンパクトであることは有界閉集合であることと同値である.これはハイネボレルの被覆定理である. 
+ \end{exa}
+  \begin{exa}
+距離空間上のコンパクト集合は有界閉集合であるが逆は一般には成り立たない.
+ \end{exa}
+ 
+  \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+    \text{}
+    \begin{enumerate}
+     \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item コンパクト空間の閉集合は常にコンパクトである.
+    \item $f : X\rightarrow Y$を位相空間$(X, \mathscr{O}_X)$から位相空間$(Y, \mathscr{O}_Y)$への連続写像とする.
+    $A \subset X$をコンパクト集合とする時, $f(A)$は$Y$のコンパクト集合である.
+    \end{enumerate}
+  \end{thm}
+ \end{tcolorbox}
+  \begin{exa}
+コンパクト集合の実連続値関数は常に最大値と最小値をもつ. これは$f: X \rightarrow \R$を連続関数とし, $X$をコンパクトとすると$f(X)$はコンパクトであるので, ハイネボレルの被覆定理から有界となるためである.
+ \end{exa}
+ 
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+    \text{}
+    \begin{enumerate}
+     \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item ハウスドルフ空間のコンパクト集合は閉集合である.
+    \item コンパクト空間からハウスドルフ空間への連続写像は閉写像である. 特にコンパクト空間からハウスドルフ空間への全単射連続写像は同相写像である.
+    \item コンパクトハウスドルフ空間は正規である.
+    \end{enumerate}
+  \end{thm}
+   \end{tcolorbox}
+
+     \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}[チコノフの定理]
+    $\{X_{\lambda}\}_{\lambda \in \Lambda}$を位相空間の集合系とする.$X_{\lambda}$がコンパクトならば$\prod_{\lambda \in \Lambda}X_{\lambda}$はコンパクトである.
+  \end{thm}
+   \end{tcolorbox}
+ \begin{rem}
+ 選択公理はチコノフの定理と同値な命題である. (世の中には選択公理を認めない人もいる. 内田本もそのような記述が多い).
+ \url{http://alg-d.com/math/ac/}に選択公理と同値な命題がほぼ網羅されている.
+ \end{rem}
+
+  \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+    $(X, \mathscr{O})$を位相空間とする.
+    \begin{enumerate}
+    \item $X$が\underline{局所コンパクト}であるとは任意の点に対してあるコンパクトな近傍が存在すること.
+    \item $A \subset X$が\underline{相対コンパクト}であるとは$\overline{A}$がコンパクトであること.
+    \end{enumerate}
+  \end{dfn}
+    \end{tcolorbox}
+ \begin{exa}
+ $\R^n$はコンパクトではないが局所コンパクトである. 
+ \end{exa}
+  \begin{exa}
+相対コンパクトな開近傍を持つ位相空間は局所コンパクトであるが逆は正しくない.
+ \end{exa}
+
+  \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+    局所コンパクトハウスドルフ空間のコンパクトな近傍全体は基本近傍系になる. 
+    つまり任意の点$x$の近傍$U$についてあるコンパクト集合$K$があって, $x \in K$かつ$K \subset U$となる.
+    特に局所コンパクトハウスドルフ空間は正則である.
+  \end{thm}
+   \end{tcolorbox}
+   
+  \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+ 位相空間$(X, \mathscr{O})$について, $X$に含まれない点$p_{\infty}$を付け加えた集合$X^{*} = X \cup \{ p_{\infty}\}$を考える.$X^{*}$の部分集合族$\mathscr{O}^{*}$を
+ $$\mathscr{O}^{*} = \{ M \subset X^{*} | p_{\infty} \not \in M, M \in \mathscr{O}\} \cup \{ M \subset X^{*} | p_{\infty}  \in M, X^{*} \setminus M\text{コンパクト}\}
+ $$
+ で定める. $(X^{*}, \mathscr{O}^{*})$はコンパクトな位相空間となる.
+ この位相空間$(X^{*}, \mathscr{O}^{*})$は$(X, \mathscr{O})$の\underline{一点コンパクト化(アレクサンドロフのコンパクト化)}といい$p_{\infty}$を\underline{無限遠点}という.
+  \end{dfn}
+    \end{tcolorbox}
+    
+  \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+ 位相空間$(X, \mathscr{O})$の一点コンパクト化を$(X^{*}, \mathscr{O}^{*})$とする.
+ \begin{enumerate}
+  \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+ \item $(X^{*}, \mathscr{O}^{*})$がハウスドルフ空間であることは$(X, \mathscr{O})$が局所コンパクトハウスドルフ空間であることと同値である.
+ \item $X$が$(X^{*}, \mathscr{O}^{*})$で稠密であることは$(X, \mathscr{O})$がコンパクトでないことと同値である.
+ \end{enumerate}
+  \end{thm}
+   \end{tcolorbox}
+ \begin{exa}
+$\R^2$の一点コンパクト化は$S^2$と同相である.
+ \end{exa}
+
+   
+\subsection{連結性}
+   
+  \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+位相空間$(X, \mathscr{O})$とする. $X$が\underline{連結}であるとは, 任意の部分集合$U \subset X$が開集合かつ閉集合となるならば$U = X$または$X = \varnothing$となること.
+$A \subset X$が部分位相に関して連結であるとき, $A$を$X$の\underline{連結集合}という
+  \end{dfn}
+    \end{tcolorbox}
+ \begin{exa}
+  $\R$は連結である. 
+ \end{exa}
+
+ \begin{exa}
+$X = (0,1) \cup (2,3]$に$\R$の部分位相を入れる. このとき$X$は連結ではない.
+$(2,3]$が開集合かつ閉集合であるためである.
+ \end{exa}
+  \begin{exa}
+位相空間$X$の任意の点$x \in X$について$\{ x\}$は連結集合である.
+ \end{exa}
+  \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+    \text{}
+     \begin{enumerate}
+      \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item $f : X \rightarrow Y$を位相空間の連続写像とする. $A \subset X$が連結ならば$f(A) \subset Y$は連結である.
+  \item 位相空間$X$の部分集合$A,B$について$A \subset B \subset \overline{A}$かつ$A$が連結ならば, $B$も連結である.
+  \item $X$を位相空間とし, $\{M_{\lambda} \}_{\lambda \in \Lambda}$を部分集合族とする. $M_{\lambda}$が連結で$ \cap_{\lambda \in \Lambda} M_{\lambda} \neq \varnothing$ならば$\cup_{\lambda \in \Lambda} M_{\lambda}$も連結である.
+ \item $\{ X_{\lambda}\}_{\lambda \in \Lambda}$を連結な位相空間族とすると$\prod_{\lambda \in \Lambda}X_{\lambda}$も連結である
+    \end{enumerate}
+  \end{thm}
+   \end{tcolorbox}
+   \begin{exa}[中間値の定理]
+   $X$を連結な位相空間とし$f : X \rightarrow \R$を連続な実関数とする. $x,y \in X$の$f$における値を
+   $\alpha =f(x), \beta=f(y), \alpha < \beta$
+   とする. このとき任意の$\gamma \in (\alpha, \beta)$についてある$z \in X$が存在して$\gamma =f(z)$となる.
+   
+   [証] もしそのような$z \in X$が存在しないとすると$X = f^{-1}(- \infty, \gamma) \cup f^{-1}( \gamma,\infty) $となり$X$の連結性に矛盾する.
+   \end{exa}
+
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+       \begin{dfn}
+ $(X, \mathscr{O})$を位相空間とする.
+\begin{enumerate}
+\item $x$を含む最大の連結集合を\underline{$x$を含む連結成分}という.
+\item 各点の連結成分が全て一点集合である位相空間を\underline{完全不連結}という.
+\end{enumerate}
+  \end{dfn}
+\end{tcolorbox}
+    
+\subsection{局所連結・弧状連結}
+
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+ $(X, \mathscr{O})$を位相空間とする. 次は同値である.
+\begin{enumerate}
+ \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item 任意の$x \in X$とその任意の近傍$N$について$x$の連結な近傍$U$があって$U \subset N$となる. 
+\item $X$の任意の開部分空間の各連結成分は開集合である.
+\item $X$の連結な開集合全体が$\mathscr{O}$の開基となる.
+\end{enumerate}
+上の性質を満たす$X$は\underline{局所連結}であるという.
+  \end{thm}
+\end{tcolorbox}
+
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+ $(X, \mathscr{O})$を位相空間とする.
+\begin{enumerate}
+\item $X$が\underline{弧状連結}であるとは任意の$x,y \in X$について, ある連続関数$f : [0,1] \rightarrow X$があって$x = f(0), y=f(1)$となること.
+\item $X$が\underline{局所弧状連結}であるとは, 任意の$x \in X$とその任意の近傍$N$について$x$の弧状連結な近傍$U$があって$U \subset N$となること. 
+\end{enumerate}
+  \end{dfn}
+\end{tcolorbox}
+関係としては次のとおりである.
+ \begin{equation*}
+\xymatrix@C=25pt@R=20pt{
+\text{連結+局所弧状連結}\ar@{=>}[r] \ar@{=>}[rd] &\text{弧状連結}  \ar@{=>}[r] & \text{連結} \\
+ &\text{局所弧状連結} \ar@{=>}[r]  &  \text{局所連結} 
+}
+\end{equation*}
+逆は成り立たない.
+
+\newpage
+\section{内田伏一 集合と位相 8章(\S26-\S28)まとめ}
+
+\subsection{距離空間の完備性・完備化}
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+$(X,d)$を距離空間とする.
+\begin{enumerate}
+	\item $\{ x_n\}_{n=1}^{\infty}$が\underline{コーシー列}であるとは, 任意の$\epsilon>0$についてある正の整数$N$があって, $N < n$ならば$d(x_n,x_N)<\epsilon$となること.
+	\item $(X,d)$が\underline{完備}であるとは任意のコーシー列が常に$X$の点に収束すること.
+\end{enumerate}
+  \end{dfn}
+\end{tcolorbox}
+
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+任意の距離空間$(X,d)$について, ある距離空間$(\tilde{X},\tilde{d})$と$i : X \rightarrow \tilde{X}$があって次を満たすとする.
+\begin{enumerate}
+ \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item $(\tilde{X},\tilde{d})$は完備である.
+\item $i$は$(X,d)$から$(\tilde{X},\tilde{d})$への等長写像である. つまり任意の$x,y \in X$について$\tilde{d}(i(x),i(y))=d(x,y)$である.
+\item $i(X)$は$\tilde{X}$において稠密である.
+\end{enumerate}
+このような完備距離空間$(\tilde{X},\tilde{d})$を$(X,d)$の\underline{完備化}という.
+  \end{dfn}
+\end{tcolorbox}
+
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}[完備化の存在]
+任意の距離空間は完備化を持ち, その完備化は等長写像の差を除いて唯一に定まる.
+  \end{thm}
+\end{tcolorbox}
+
+\begin{exa}
+$\Q$はユークリッド位相に関して完備ではないが, $\R$は完備である.
+\end{exa}
+\begin{exa}
+$\Q$のユークリッド位相に関する完備化は$\R$である.
+\end{exa}
+
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}[縮小写像の原理]
+$(X,d)$を距離空間とする.
+ある連続写像$f : X \rightarrow X$と$0<c<1$があって, 任意の$x,y \in X$について
+$$
+d(f(x),f(y)) \leqq cd(x,y)
+$$
+であると仮定する. $X$が完備ならば, $f(a)=a$となる点$a \in X$がただ一つ存在する.
+  \end{thm}
+\end{tcolorbox}
+
+
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}[ベールのカテゴリー定理]
+完備距離空間$(X,d)$の加算個の稠密な開集合$G_n$について, $\cap_{n=1}^{\infty}G_n$は稠密である.　
+  \end{thm}
+\end{tcolorbox}
+
+
+
+\subsection{コンパクト距離空間}
+    \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+距離空間$(X,d)$が\underline{全有界}であるとは, 任意の$\epsilon>0$についてある$x_1, \ldots, x_n$があって
+$
+X = N(x_1,\epsilon) \cup \cdots \cup  N(x_n,\epsilon) \text{となること.}
+$
+  \end{dfn}
+ \end{tcolorbox}
+ 
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+全有界な距離空間は第2可算公理を満たす.
+  \end{thm}
+  \end{tcolorbox}
+  
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+距離空間$(X,d)$に関して次は同値.
+\begin{enumerate}
+ \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item $(X,d)$はコンパクト
+\item $(X,d)$の任意の点列は収束する部分列を持つ
+\item $(X,d)$は全有界かつ完備
+\end{enumerate}
+  \end{thm}
+  \end{tcolorbox}
+  
+\begin{exa}
+閉区間$[0,1]$は$\R$の有界閉集合であるのでコンパクトである. よって$[0,1]$上の任意の点列は収束する部分列を持つ(ボルツァーノ-ワイエルシュトラスの定理)
+\end{exa}
+
+\newpage
+\section{内田伏一 集合と位相 9章(\S29-\S30)}
+
+\subsection{写像空間}
+
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+$X$をコンパクト空間とし
+$$
+C(X) := \{ f : X \rightarrow \R | \text{$f$は実数値連続関数}\}
+$$
+とする. $f,g \in C(X)$に関して
+$$
+\delta(f,g)=\sup_{x \in X}\{ |f(x) - g(x)|\}
+$$
+とおく. このとき$(C(X), \delta)$は完備距離空間になる. またこの距離により位相を
+$C(X)$の\underline{一様収束位相}と呼ぶ.
+  \end{thm}
+  \end{tcolorbox}
+  一様収束位相による収束列を\underline{一様収束列}とも呼ぶ.
+
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+  $X$をコンパクト空間とし, $C(X)$の部分集合を$S$とする
+  \begin{enumerate}
+  \item $S$が\underline{一様有界}であるとは, ある正の数$K>0$があって任意の$f,g \in S$について$\delta(f,g) \leqq K$となること.
+  \item $S$が\underline{同程度連続}であるとは, 任意の$\epsilon>0$と任意の$x \in X$についてある$x$の近傍$U$が存在して任意の$f \in S$と$y \in U$について$|f(x)- f(y)| < \epsilon$となること
+  \end{enumerate}
+  \end{dfn}
+  \end{tcolorbox}
+  
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}[アスコリ-アルツェラの定理]
+  $X$をコンパクト空間とし, $C(X)$の部分集合を$S$とする
+ $C(X)$の一様収束位相に関して$S$が相対コンパクト(つまり$\overline{S}$がコンパクト)であることは$S$が一様有界かつ同程度連続であることと同値. 特に$S$の任意の点列$\{ f_n\}_{n \in \N}$は$\overline{S}$に収束する部分列を持つ.
+  \end{thm}
+  \end{tcolorbox}
+  
+  \begin{comment}
+    \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+  $X$をコンパクト空間とし, $C(X)$の部分集合を$S$とする
+$S$が$C(X)$の\underline{部分多元環}とは任意の$f,g \in S$と$c \in \R$について$f+g \in S$, $fg \in S$, $cf \in S$となること.
+  \end{dfn}
+  \end{tcolorbox}
+  \end{comment}
+  
+     \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}[ストーン-ワイエルシュトラスの近似定理]
+  $X$をコンパクト空間とし, $S$を次の2条件を満たす$C(X)$の部分多元環(任意の$f,g \in S$と$c \in \R$について$f+g \in S$, $fg \in S$, $cf \in S$となる集合)とする.
+  \begin{enumerate}
+   \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item 任意の相異なる$x,y \in X$についてある$f \in S$があって$f(x) \neq f(y)$.
+  \item 任意の$x \in X$についてある$g \in S$があって$g(x) \neq 0$.
+  \end{enumerate}
+このとき$S$は$C(X)$の一様収束位相に関して稠密である.
+  \end{thm}
+  \end{tcolorbox}
+  \begin{exa}
+  任意の$[0,1]$上の実数値関数$f$と任意の正の数$\epsilon$について, ある実数多項式$P$があって
+  任意の$x \in X$について$|f(x) - P(x)| < \epsilon$が成り立つ. これは$S \subset C([0,1])$を実数多項式からなる部分多元環としてストーン-ワイエルシュトラスの近似定理を使えば良い.
+  \end{exa}
+  
+  \subsection{コンパクト開位相}
+\begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+$X,Y$を位相空間とし, $C(X,Y)$を$X$から$Y$への連続写像の全体集合とする.
+  部分集合$A \subset X$, $B \subset Y$について
+$$
+W(A,B):=\{  f \in C(X,Y) | f(A) \subset B\}
+$$
+とおき, $K \subset X$がコンパクト集合で$U \subset Y$が開集合であるような$W(K,U)$の全体からなる集合を$\mathscr{S}$とする.
+$\mathscr{S}$が生成する位相を$C(X,Y)$の\underline{コンパクト開位相}という.
+  \end{dfn}
+  \end{tcolorbox}
+  \begin{rem}
+  $X$がコンパクトならば$C(X)$の一様収束位相とコンパクト開位相は一致する.
+  \end{rem}
+
+  \begin{exa}
+  部分集合$A \subset X$, 閉集合$B \subset Y$について$W(A,B)$はコンパクト開位相において閉集合である.
+  \end{exa}
+
+       \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+    $X$を位相空間, $Y$を局所コンパクトハウスドルフ空間とする.
+    このとき値写像 
+   $$
+\begin{array}{cccc}
+\Phi : &C(X,Y) \times X& \rightarrow & Y  \\
+&(f,x)& \longmapsto &f(x)
+\end{array}
+$$
+は連続である.
+  \end{thm}
+   \end{tcolorbox}
+   
+    \begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+    \text{}
+\begin{enumerate}
+ \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item $Y$がハウスドルフ空間ならば$C(X,Y)$もハウスドルフである.
+\item $Y$が正則空間ならば$C(X,Y)$も正則である.
+\end{enumerate}
+  \end{thm}
+   \end{tcolorbox}
+ \end{document}
+ 
+
+ 
