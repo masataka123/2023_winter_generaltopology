@@ -75,7 +75,9 @@
 ## 演習問題のpdf
 ガイダンス資料と全ての演習問題をまとめました. 
 
+<!--
 [演習問題pdf](https://masataka123.github.io/2023_winter_generaltopology/material/0_集合と位相問題集.pdf)
+-->
 
 (2023/10/03 注: CLEからこのページを見るとダウンロードできない可能性があります. その場合はhttps://masataka123.github.io/2023_winter_generaltopology/とリンクを打ってCLE外から見てください. )
 
