@@ -10,7 +10,7 @@
 \usepackage{latexsym} %ごくたまに必要になる
 \renewcommand{\kanjifamilydefault}{\gtdefault}
 \usepackage{otf} %宗教上の理由でmin10が嫌いなので
-\usepackage{showkeys}\renewcommand*{\showkeyslabelformat}[1]{\fbox{\parbox{2cm}{ \normalfont\tiny\sffamily#1\vspace{6mm}}}}
+%\usepackage{showkeys}\renewcommand*{\showkeyslabelformat}[1]{\fbox{\parbox{2cm}{ \normalfont\tiny\sffamily#1\vspace{6mm}}}}
 \usepackage[driverfallback=dvipdfm]{hyperref}
 
 
@@ -51,13 +51,7 @@
 
 
 
-   %当然のようにやる．
 \allowdisplaybreaks[4]
-   %もちろん．
-%\title{第1回. 多変数の連続写像 (岩井雅崇, 2020/10/06)}
-%\author{岩井雅崇}
-%\date{2020/10/06}
-%ここまで今回の記事関係ない
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable, skins, theorems}
 
@@ -83,7 +77,7 @@
 
 \title{幾何学基礎2(位相空間論)演義 演習問題}
 \author{岩井雅崇 (大阪大学)}
-\date{2023年10月2日 \, ver 1.00}
+\date{2023年10月3日 \, ver 1.00}
 %ここから本文．
 \begin{document}
 
@@ -108,7 +102,8 @@
 \begin{itemize}
   \setlength{\parskip}{0cm} % 段落間
   \setlength{\itemsep}{0cm} % 項目間
-\item この授業は対面授業です. 火曜4限(15:10-16:40)に理学部D303にて演習の授業を行います.
+\item この授業は\underline{対面授業}です. \underline{火曜4限(15:10-16:40)に理学部D303}にて演習の授業を行います.
+\item \underline{基本的には講義の授業とセットで受講してください.} 演義の授業のみ受講する場合は10月3日の授業後に申し出ること. 
 \item 授業ホームページ(\url{https://masataka123.github.io/2023_winter_generaltopology/})にて授業の問題等をアップロードしていきます. \footnote{URLは"2023"です.去年のページに行かないようにしてください. }
 QRコードは下にあります.
 \begin{figure}[htbp]
@@ -128,7 +123,8 @@ QRコードは下にあります.
 \item 位相空間論の講義の単位が可以上である.
 \item 最終授業(2024/01/30の予定)までに0.1点以上の演習点(後述)を獲得していること
 \end{enumerate}
-演習の成績は”講義の成績”+”演習点”×(点数補正係数)でつける予定です. 点数補正係数は実数かつ全員の成績から定まる係数です.
+成績は演習点でつける予定ですが, 場合によっては講義の成績も参考にします.\footnote{理由としては成績がばらけるかどうかが, 現時点では予測が不可能だからです. }
+%演習の成績は”講義の成績”+”演習点”×(点数補正係数)でつける予定です. 点数補正係数は実数かつ全員の成績から定まる係数です.
 
 \medskip
 \hspace{-18pt}{\Large \underline{演習点に関して}}
@@ -137,7 +133,7 @@ QRコードは下にあります.
 \begin{enumerate}
   \setlength{\parskip}{0cm} 
   \setlength{\itemsep}{0cm} 
-\item レポート(2回)を解く. レポートの出来により0.1点の演習点が与えられる.
+\item レポートを解く. レポートの出来により$0.1\sim0.5$点の演習点が与えられる.
 \item 配布した演習問題を解き, その解答を黒板を用いて発表する. その場合の演習点は「解いた問題の難易度」と「発表の仕方・解答の方法」などから定まります.
 \end{enumerate}
 
@@ -147,8 +143,8 @@ QRコードは下にあります.
 \medskip
 \hspace{-18pt}{\large \underline{1. レポートに関して}}
 
-基本的には中間試験や期末試験の対策のための基本的な問題を出します. それらの試験の時期に締め切りを設けます. レポート問題は演習問題の$^{\bullet}$がついてる問題(後述)からしか出さない予定です.
-(中間レポートは10-11月に, 期末レポートは12-1月に詳細を言う予定です.)
+基本的には期末試験の対策のための基本的な問題を出します.  問題は演習問題の$^{\bullet}$がついてる問題(後述)の内容から出す予定です.
+%(中間レポートは10-11月に, 期末レポートは12-1月に詳細を言う予定です.)
 
 \newpage
 %\medskip
@@ -158,9 +154,9 @@ QRコードは下にあります.
 \begin{itemize}
   \setlength{\parskip}{0cm} 
   \setlength{\itemsep}{0cm} 
-\item 問題の解答を黒板に書いて発表してください. 正答だった場合その問題はそれ以降解答できなくなります. 不正解だった場合他の人に解答権が移ります. 
+\item 問題の解答を黒板に書いて発表してください. 正答だった場合その問題はそれ以降解答できなくなります. %不正解だった場合他の人に解答権が移ります. 
 \item  授業が始まる前にある程度演習問題をあらかじめ解き発表できる状態にしておいてください.
-\item 複数人が解答したい問題があるときは平和的な手段で解答者を決めます.
+\item 複数人が解答したい問題があるときは平和的な手段で解答者を決めます.(例えば問題解答数が少ない人を優先する, トランプで決めるなどです. )
 \item 発表方法があまりにも悪い場合(教科書丸写しなど)は減点します.
 \end{itemize}
 
@@ -173,11 +169,11 @@ QRコードは下にあります.
 \begin{enumerate}
   \setlength{\parskip}{0cm} 
   \setlength{\itemsep}{0cm} 
-\item $^\bullet$がついてる問題は解けないといけない問題です. %ある程度授業を理解している人は他の人に解答を譲ってください.
-\item 何もついてない問題は普通の問題です. ちょっと考えれば解ける範疇に収まっている(はずです).
-\item $^*$問題や$^{**}$問題は難しそうな問題です. ちょっと難しい問題から激ムズの問題まであります. 私やTAが解けない問題もあります. 基本的に解かせる気はなく自由気ままに出しております.
+\item $^\bullet$がついてる問題は解けないといけない問題です. 演習点は$0.1\sim1$点です. %ある程度授業を理解している人は他の人に解答を譲ってください.
+\item 何もついてない問題は普通の問題です. ちょっと考えれば解ける範疇に収まっている(はずです). 演習点は$0.5\sim2.5$点です.
+\item $^*$問題や$^{**}$問題は難しそうな問題です. ちょっと難しい問題から激ムズの問題まであります. 私やTAが解けない問題もあります. 基本的に解かせる気はなく自由気ままに出しております. 演習点は$1.5 \sim 7$点です. 
 \end{enumerate}
-\item 難易度が高い問題ほど演習点も高いです.
+%\item 難易度が高い問題ほど演習点も高いです.
 \end{itemize}
 
 次のご協力をお願いいたします.
@@ -191,25 +187,28 @@ QRコードは下にあります.
 
 
 \medskip
-\hspace{-18pt}{\Large \underline{よくわからない人に向けてのヒント}}
+\hspace{-18pt}{\Large \underline{まとめ}}
 \begin{enumerate}
   \setlength{\parskip}{0cm} 
   \setlength{\itemsep}{0cm} 
-\item 単位だけ欲しい人は一回も黒板で発表せずにレポートを2回提出してください. さらに位相空間論の講義の試験で可以上をもらってください. それで演義の成績の単位ももらえます. (講義の試験が良ければ演義の成績も良いです.)
+\item \underline{単位が欲しい方はレポートを提出し, 講義で可以上を取ってください.} %単位だけ欲しい人は一回も黒板で発表せずにレポートを2回提出してください. さらに位相空間論の講義の試験で可以上をもらってください. それで演義の成績の単位ももらえます. (講義の試験が良ければ演義の成績も良いです.)
 \item ちょっと欲張りな人は$^\bullet$がついている問題や何もついてない問題を発表してください. なお$^{\bullet}$がついている問題が全て解ければ, 講義の試験の単位は(おそらく)もらえると思います.
 \item 意欲のある人は難しい問題など色々解いてください. そのほうが私は楽しいです.
 \end{enumerate}
 
 
 \vspace{11pt}
-\hspace{-18pt}{\Large \underline{その他}}
+\hspace{-18pt}{\Large \underline{休講予定・その他}}
 \begin{itemize}
   \setlength{\parskip}{0cm} % 段落間
   \setlength{\itemsep}{0cm} % 項目間
-    \item 演習問題と授業内容が噛み合ってない可能性があります.
-  \item 休講あるいは補講をすることがあるので, こまめにホームページとCLEは確認してください.
+  \item 休講予定: 2024年1月16日 (休講はほぼ確定) 2023年12月05日または2023年12月12日 (どちらか休講にするかも・未確定)
+    %\item 演習問題と授業内容が噛み合ってない可能性があります.
+    \item　問題のミスがあれば私に言ってください. ミスはかなりあると思います. 
+  \item 休講情報や演習問題の修正をするので, こまめにホームページを確認してください.
     \item オフィスアワーを月曜16:00-17:00に設けています. この時間に私の研究室に来ても構いません(ただし来る場合は前もって連絡してくれると助かります.)
-    \item $\pi$-base \url{https://topology.jdabbs.com}も活用してください. 
+    \item TAさんは演義の時間中に巡回しているので, 自由にご質問して構いません. 
+    %\item $\pi$-base \url{https://topology.jdabbs.com}も活用してください. 
  \end{itemize}
  
 \newpage
@@ -334,7 +333,7 @@ $$
   \setlength{\itemsep}{0pt} 
 \item 0でない有理数$r,s \in \Q$について, $r+s \neq 0$ならば$v_{p}(r+s) \geqq \min(v_{p}(r), v_{p}(s))$であることを示せ.
 \item $x,y \in \Q$について$d_{p}(x,y) :=|x-y|_{p} $とおくと$d_{p}$は$\Q$の距離になることを示せ.
-\item $a,r \in \Q$について, 開球$B(a,r)=\{x \in \Q | d_{p}(x,a) < r \}$で定める. $B(a,r)$は閉集合であることを示せ.
+\item $a,r \in \Q$かつ$r>0$について, 開球$B(a,r)=\{x \in \Q | d_{p}(x,a) < r \}$で定める. $B(a,r)$は閉集合であることを示せ.
 \item $a_n := \sum_{i=0}^{n-1}2^i =1 + 2 + \cdots + 2^{n-1}$とおく. $d_{2}(-1, a_{n})$の値を求めよ. 
 \end{enumerate}
 
@@ -357,7 +356,7 @@ $$
 \begin{array}{ccccc}
 f: &\mathbb{F}_{2}^{4}& \rightarrow & \mathbb{F}_{2}^{7}& \\
 &(a,b,c,d) & \longmapsto & 
-(a,b,c,d,a+c+d, a+b+d, b+c+d)&
+(a,b,c,d,a+b+d, a+c+d, b+c+d)&
 \end{array}
 $$
 
@@ -428,6 +427,7 @@ $$
   	\setlength{\itemsep}{0pt} 
 	\item $(\R,\mathscr{U}_c)$は位相空間になることを示せ.
 	\item $\R$のユークリッド位相を$\mathscr{U}_{Euc}$とするとき$\mathscr{U}_c  \subset \mathscr{U}_{Euc}$を示せ. 
+	\item $\{ 0\}$は $(\R,\mathscr{U}_{c} )$で開集合になるか? また閉集合になるか?
 	\item $(-1,1)$は$(\R,\mathscr{U}_c)$で開集合になるか? また閉集合になるか?
 	%\item $A \in \mathscr{U}_{Euc}$かつ$A \not \in \mathscr{U}_c$なる$A$の例を一つあげよ.
 	\end{enumerate}
@@ -495,12 +495,13 @@ $$
 	\setlength{\itemsep}{0pt} 
 	\item $(\R,\mathscr{B}  )$は位相空間とはならないことを示せ. 
 	\item $(\R,\mathscr{U}_{Sor})$は位相空間になることを示せ.
-	\item $(0,1)$は$(\R,\mathscr{U}_{Sor})$で開集合であるか?また閉集合であるか?
-	\item $[0,1)$は$(\R,\mathscr{U}_{Sor})$で開集合であるか?また閉集合であるか?
+	\item $\{ 0\}$は $(\R,\mathscr{U}_{Sor} )$で開集合になるか? また閉集合になるか?
+	\item $(0,1)$は$(\R,\mathscr{U}_{Sor})$で開集合にあるか?また閉集合にあるか?
+	%\item $[0,1)$は$(\R,\mathscr{U}_{Sor})$で開集合であるか?また閉集合であるか?
 	%\item ユークリッド位相とこの位相の強弱を判定せよ.
 	\end{enumerate}
 
-\item $X$の開集合系$\mathscr{U}_1, \mathscr{U}_2$について$\mathscr{U}_1 \subset \mathscr{U}_2$であるとき, \underline{$\mathscr{U}_1$は$\mathscr{U}_2$より弱い位相である}という. 例えば\ref{cofinite}から$\mathscr{U}_c $は$\mathscr{U}_{Euc}$より弱い位相である.  
+\item $^{*}$ $X$の開集合系$\mathscr{U}_1, \mathscr{U}_2$について$\mathscr{U}_1 \subset \mathscr{U}_2$であるとき, \underline{$\mathscr{U}_1$は$\mathscr{U}_2$より弱い位相である}という. 例えば\ref{cofinite}から$\mathscr{U}_c $は$\mathscr{U}_{Euc}$より弱い位相である.  
 \ref{discrete}から\ref{Sorgenfrey} までの$\R$の位相8個全てに関して, その強弱を判定せよ. なお強弱関係がつけられないものもある(かもしれない).\footnote{$\mathscr{U}_1 \not \subset \mathscr{U}_2$かつ$\mathscr{U}_2 \not \subset\mathscr{U}_1$となることもあるためである.なお解答に際し全て列挙するのは面倒であれば$\mathscr{U}_1 \subset \mathscr{U}_2 \subset \mathscr{U}_3$というふうに記述を簡略化しても良い .} 
 
 
@@ -528,16 +529,16 @@ $\Z$を整数の集合とする.
 \item $x y \in \mathfrak{p}$ならば$x \in \mathfrak{p}$または$y \in \mathfrak{p}$
 \end{itemize}
 任意の$a \in I$について$(a) :=  \{ x \in \Z | \text{ある$b \in \Z$があって$x =ab$}\}$と定める.
-次の問いに答えよ.
+%次の問いに答えよ.
 \begin{enumerate}
 \setlength{\parskip}{0cm}
 \setlength{\itemsep}{0pt} 
-\item 任意のイデアル$I$は, ある$a \in I$があって$I = (a)$
+\item 任意のイデアル$I$は, ある$a \in \Z$があって$I = (a)$
 %$$
 %I = (a) :=  \{ x \in \Z | \text{ある$b \in \Z$があって$x =ab$}\}
 %$$
 とかけることを示せ. 
-\footnote{ヒント: イデアル$I$の元で絶対値が一番小さいものが$a$の候補となる. またどちらかの包含を示す際に, $I$の元を$a$で割った余りを考えよ. }
+\footnote{ヒント: イデアル$I$の０でない元で絶対値が一番小さいものが$a$の候補となる. またどちらかの包含を示す際に, $I$の元を$a$で割った余りを考えよ. }
 \item 素イデアル$\mathfrak{p}  \subset \Z$を全て求めよ. \footnote{ヒント: 素イデアルは英語でprime idealという. ただしprime以外にも素イデアルになるものがある.}
 \item ${\rm Spec}(\Z)$ を$\Z$の素イデアル全体の集合とする. また整数$n$について
 $$
@@ -622,7 +623,7 @@ $A^{\circ}\subset A \subset \overline{A}$である.
 
 
   \item $^\bullet$ $\R^2$にユークリッド位相を入れたものを考える. $E:= \{ (x,y)  \in \R^2| \text{$x$と$y$はともに有理数}\}$
-とする. $E$の閉包, 内部, 境界を求めよ. 
+とする. $E$の閉包と内部を求めよ. 
 
 \item $^{\bullet}$ $(\R, \mathscr{U}_c)$を\ref{cofinite}の補有限位相とする. 
 このとき空集合を除く任意の開集合が稠密であることを示せ.
@@ -655,13 +656,6 @@ $A^{\circ}\subset A \subset \overline{A}$である.
 %	%\item  「任意の点$p \in X$について$\overline{\{p\}} =X$となる位相空間」の例をあげよ. 
 %	\end{enumerate}
 
-\item 
-\begin{enumerate}
-	\setlength{\parskip}{0cm}
-  \setlength{\itemsep}{0pt} 
-	\item  「任意の点$p \in \R$について$\overline{\{p\}} =\R$」となる$\R$の位相を全て求めよ. 
-	\item  「任意の開集合$U,V \subset \R$について$U \neq \R$かつ$U \neq V$ならば$U \cap V = \varnothing$」となる$\R$の位相を全て求めよ. 
-	\end{enumerate}
 	
 %\item 距離空間$(X,d)$に関して
 %$$\mathscr{B} = \{ N(a,\epsilon) | a \in X, \epsilon >0, \epsilon \in \Q\}$$
@@ -710,12 +704,20 @@ ${(\overline{A})}^\circ$は$A$の閉包の内部, ${\overline{(A^\circ)}}^\circ$
 
 
 
-\item \ref{cofinite}から\ref{Sorgenfrey} までの$\R$の位相5個全てに関して, $\{ 0\}$の閉包を各々求めよ.
+%\item \ref{cofinite}から\ref{Sorgenfrey} までの$\R$の位相5個全てに関して, $\{ 0\}$の閉包を各々求めよ.
 
 %\item $^{*}$　\ref{trivial}から\ref{Sorgenfrey} までの$\R$の位相8個全てに関して, $(-1,1)$の閉包を各々求めよ.
 \item \ref{cofinite}から\ref{Sorgenfrey} までの$\R$の位相5個全てに関して, $(-1,1]$の内部を各々求めよ.
 
 \item $^{*}$ \ref{Zariski_topology}のザリスキ位相に関して, $\{ (2) \}$の閉包を求めよ. また$\{ (0) \}$の閉包を求めよ.
+
+\item 
+\begin{enumerate}
+	\setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt} 
+	\item  「任意の点$p \in \R$について$\overline{\{p\}} =\R$」となる$\R$の位相を全て求めよ. 
+	\item  「任意の開集合$U,V \subset \R$について$U \neq \R$かつ$U \neq V$ならば$U \cap V = \varnothing$」となる$\R$の位相を全て求めよ. 
+	\end{enumerate}
 
 \newpage 
 \item\label{basis_topology}
@@ -732,8 +734,9 @@ $$ \mathscr{U}_{\mathscr{B}} = \{ V\subset X | \text{ある$\mathscr{A} \subset 
 \begin{enumerate}
 	\setlength{\parskip}{0cm} 
   \setlength{\itemsep}{0cm} 
-\item $(X,\mathscr{U}_{\mathscr{B}} )$は位相空間であることを示せ. \footnote{$\varnothing \in \mathscr{U}_{\mathscr{B}}$であることに注意せよ.} この位相$\mathscr{U}_{\mathscr{B}} $を\underline{$\mathscr{B}$を開基とする$X$上の位相}という. 
-\item $\mathscr{U}_{\mathscr{B}}$は$\mathscr{B}$が生成する位相であることを示せ.\footnote{このことより次がわかる. 「$\mathscr{B}$が問題の条件を満たせば, 任意の位相$\mathscr{U}$で$\mathscr{B}$を開集合系の基(開基)とするものは,$\mathscr{U}_{\mathscr{B}} $に限られる.」}
+\item $(X,\mathscr{U}_{\mathscr{B}} )$は位相空間であることを示せ.\footnote{$\varnothing \in \mathscr{U}_{\mathscr{B}}$であることに注意せよ.} この位相$\mathscr{U}_{\mathscr{B}} $を\underline{$\mathscr{B}$を開基とする$X$上の位相}という. 
+\item $\mathscr{U}_{\mathscr{B}}$は$\mathscr{B}$が生成する位相であることを示せ.
+%\footnote{このことより次がわかる. 「$\mathscr{B}$が問題の条件を満たせば, 任意の位相$\mathscr{U}$で$\mathscr{B}$を開集合系の基(開基)とするものは,$\mathscr{U}_{\mathscr{B}} $に限られる.」}
 \end{enumerate}
 
 
@@ -774,7 +777,7 @@ $$
 	
 \hspace{-22pt}以下$(\Z,\mathscr{U}_F)$という位相空間で開集合や閉集合を考える. 
 	\item 空でない有限集合は$(\Z, \mathscr{U}_F)$上で開集合ではないことを示せ. 
-	\item 任意の$a,b \in \Z$について$a\Z + b$は$(\Z, \mathscr{U}_F)$上で開集合かつ閉集合であることを示せ.
+	\item 任意の$a,b \in \Z$かつ$a \neq 0$について$a\Z + b$は$(\Z, \mathscr{U}_F)$上で開集合かつ閉集合であることを示せ.
 	\item 素数全体の集合を$\mathcal{P}$とする.次を示せ. 
 	$$\Z \setminus \{ \pm 1\} = \bigcup_{p \in \mathcal{P}} p\Z$$
 	\item $\mathcal{P}$は無限集合であることを示せ. つまり素数は無限個存在する.
@@ -904,7 +907,7 @@ $$
 %\item $(X, \mathscr{U})$を位相空間とし, $\R$にユークリッド位相を入れる. $f,g :  X \rightarrow \R$を$X$から$\R$への連続写像とするとき, $f +g, f-g, \alpha f, f/g$は$X$から$\R$への連続写像となることを示せ. ここで$\alpha \in \R$であり, $f/g$は$g(x)=0$となる$x \in X$が存在しないときに定義される. 
 
 \item (相対位相の普遍性) $X$を位相空間とし部分集合$A\subset X$に相対位相を入れる. 
-任意の位相空間$Z$とその連続写像$f : Z \to X$について, $f(Z) \subset A$ならば, ある連続写像$\widetilde{f} : Z \to A$で$\widetilde{f} \circ i = f$となるものが\underline{ただ一つ存在}することを示せ. ただし$i$は包含写像$i: A \to X$とする. 
+任意の位相空間$Z$とその連続写像$f : Z \to X$について, $f(Z) \subset A$ならば, ある連続写像$\widetilde{f} : Z \to A$で$i \circ \widetilde{f}= f$となるものが\underline{ただ一つ存在}することを示せ. ただし$i$は包含写像$i: A \to X$とする. 
 
    \begin{tcolorbox}[
     colback = white,
@@ -919,7 +922,7 @@ $$
 
 \item \ref{cofinite}の補有限位相空間$(\R, \mathscr{U}_c)$からユークリッド位相空間$(\R, \mathscr{U}_{Euc})$への連続写像を全て求めよ.
 
-\item $^*$ $f : \R \rightarrow \R$を写像とし, $\mathscr{U}_{Euc}$をユークリッド位相, $\mathscr{U}_{usc}$を\ref{usc}の上半連続位相とする. $f$を$(\R, \mathscr{U}_{usc})$から$(\R, \mathscr{U}_{Euc})$への連続写像とするとき, $f$は定数写像であることを示せ.
+%\item $^*$ $f : \R \rightarrow \R$を写像とし, $\mathscr{U}_{Euc}$をユークリッド位相, $\mathscr{U}_{usc}$を\ref{usc}の上半連続位相とする. $f$を$(\R, \mathscr{U}_{usc})$から$(\R, \mathscr{U}_{Euc})$への連続写像とするとき, $f$は定数写像であることを示せ.
 
 \item $^*$ $f : \R \rightarrow \R$を写像とし, $\mathscr{U}_{Euc}$をユークリッド位相, $\mathscr{U}_{usc}$を\ref{usc}の上半連続位相とする. 次は同値であることを示せ.
 	\begin{enumerate}
@@ -945,21 +948,21 @@ $$
 
 
 	
-\item \label{pointwise}$^*$  $(X, \mathscr{U})$を位相空間とする.
-$X$の点列$\{ x_n\}_{n =1}^{\infty}$が点$x\in X$に収束するとは, 「任意の$x$の近傍$V$についてある$N \in \N$があって$N<n$ならば$x_n \in V$である」ことで定義をする.次の問いに答えよ.
-	\begin{enumerate}
-	\setlength{\parskip}{0cm} 
-  \setlength{\itemsep}{0cm} 
-	\item 位相空間$(X, \mathscr{U})$で次を満たすものを構成せよ．
-		\begin{enumerate}
-		\setlength{\parskip}{0cm} 
-  \setlength{\itemsep}{0cm} 
-		\item $(X, \mathscr{U})$は密着位相ではない.
-		\item ある点$a \in X$があって, 任意の$X$の点列$\{ x_n\}_{n =1}^{\infty}$は$a$に収束する.
-		\end{enumerate}
-	\item $f :X\rightarrow Y$が点$x\in X$で連続とする. このとき$x$に収束する任意の$X$の点列$\{ x_n\}_{n =1}^{\infty}$について, $\{ f(x_n)\}_{n =1}^{\infty}$は$f(x)$に収束する.
-	\item 上の逆は一般には成り立たない. その例を構成せよ.\footnote{位相空間の間の写像$f :X\rightarrow Y$と点$a \in X$であって, 「$a \in X$に収束する任意の$X$の点列$\{ x_n\}_{n =1}^{\infty}$について, $\{ f(x_n)\}_{n =1}^{\infty}$は$f(a)$に収束する」が「$f :X\rightarrow Y$が点$a\in X$で連続」ではない例を構成してください.}つまり点列を用いた連続性の定義は一般には弱いことを意味する.
-	\end{enumerate}
+%\item \label{pointwise}$^*$  $(X, \mathscr{U})$を位相空間とする.
+%$X$の点列$\{ x_n\}_{n =1}^{\infty}$が点$x\in X$に収束するとは, 「任意の$x$の近傍$V$についてある$N \in \N$があって$N<n$ならば$x_n \in V$である」ことで定義をする.次の問いに答えよ.
+%	\begin{enumerate}
+%	\setlength{\parskip}{0cm} 
+%  \setlength{\itemsep}{0cm} 
+%	\item 位相空間$(X, \mathscr{U})$で次を満たすものを構成せよ．
+%		\begin{enumerate}
+%		\setlength{\parskip}{0cm} 
+%  \setlength{\itemsep}{0cm} 
+%		\item $(X, \mathscr{U})$は密着位相ではない.
+%		\item ある点$a \in X$があって, 任意の$X$の点列$\{ x_n\}_{n =1}^{\infty}$は$a$に収束する.
+%		\end{enumerate}
+%	\item $f :X\rightarrow Y$が点$x\in X$で連続とする. このとき$x$に収束する任意の$X$の点列$\{ x_n\}_{n =1}^{\infty}$について, $\{ f(x_n)\}_{n =1}^{\infty}$は$f(x)$に収束する.
+%	\item 上の逆は一般には成り立たない. その例を構成せよ.\footnote{位相空間の間の写像$f :X\rightarrow Y$と点$a \in X$であって, 「$a \in X$に収束する任意の$X$の点列$\{ x_n\}_{n =1}^{\infty}$について, $\{ f(x_n)\}_{n =1}^{\infty}$は$f(a)$に収束する」が「$f :X\rightarrow Y$が点$a\in X$で連続」ではない例を構成してください.}つまり点列を用いた連続性の定義は一般には弱いことを意味する.
+%	\end{enumerate}
  \end{enumerate}
 
 
@@ -1100,7 +1103,7 @@ $\prod_{i \in \N} (0,1)$は直積空間$\prod_{i \in \N} X_{i}$の開集合か�
 	%\end{enumerate}
 
 
-\item $^{*}$$\N$を自然数の集合とする. 各$i \in \N$について $X_{i} = \{ 0,1\}$とし, $X_i$には離散位相を入れる.
+\item $^{*}$$\N$を0以上の自然数の集合とする. 各$i \in \N$について $X_{i} = \{ 0,1\}$とし, $X_i$には離散位相を入れる.
 %$(X_{i}, \mathscr{U}_{i}) = (\{ 0,1\}, \mathcal{P}(\{0,1 \})) $とする. (つまり$(X_{i}, \mathscr{U}_{i}) $は離散位相空間とする). 
 $f :\prod_{i \in \N} X_{i} \rightarrow \R$を
 $$
@@ -1108,7 +1111,7 @@ f (\{ x_i\}_{i \in \N}) = \sum_{i=0}^{\infty} \frac{x_i}{2^i}
 $$
 で定める. $f$はwell-definedであり\footnote{なぜ$\sum_{i=0}^{\infty} \frac{x_i}{2^i}$が収束するか示してください.} 
 直積空間$\prod_{i \in \N} X_{i}$から$\R$への連続写像になることを示せ.
-
+また$f(\prod_{i \in \N} X_{i})$を求めよ.
 
 
 \item $^{*}$  $\{ X_\lambda \}_{\lambda \in \Lambda}$を位相空間とし, $\prod_{\lambda \in \Lambda} X_{\lambda} $に直積位相を入れたものを考える. 
@@ -1353,7 +1356,7 @@ $$
     fonttitle = \bfseries,
     breakable = true]
 
-位相空間$(X, \mathscr{U})$が\underline{ハウスドルフ空間(または$T_2$空間)}であるとは, 任意の$a, b \in X$について, ある$U, V \in \mathscr{U}$があって$a \in U, b \in V, U \cap V = \varnothing $となること.
+位相空間$(X, \mathscr{U})$が\underline{ハウスドルフ空間(または$T_2$空間)}であるとは, 任意の相異なる2点$a, b \in X$について, ある$U, V \in \mathscr{U}$があって$a \in U, b \in V, U \cap V = \varnothing $となること.
 
  \end{tcolorbox}
 
@@ -1509,7 +1512,7 @@ $$
 
 
 \begin{center}
-\section{可算公理}
+\section{分離公理の続き}
 \label{sec-countable}
 \end{center}
 
@@ -1517,13 +1520,13 @@ $$
  岩井雅崇(いわいまさたか)
 \end{flushright}
 
-可算公理に関してはさほど重要ではない(気がするので), 変な例のみ入れることにした. (私もTAも用語を忘れていると思う...)
+正規・正則などの分離公理や可算公理に関してはさほど重要ではない(気がするので), 変な例のみ入れることにした. (私もTAも用語を忘れていると思う...)
 
 \begin{enumerate}[label=\textbf{問}\ref*{sec-countable}.\arabic*]
 	\setlength{\parskip}{0cm} 
   \setlength{\itemsep}{7pt} 
 	
-\item  \label{Sor2} $^{*}$ (Sorgenfrey plane) $\R^2$において
+\item  \label{Sor2} $^{**}$ (Sorgenfrey plane) $\R^2$において
 $$
 \mathscr{B} = \{(a,b] \times (c,d]| a,b,c,d \in \R, a<b, c<d\} 
 $$
@@ -1551,9 +1554,11 @@ $X$には$\mathcal{B}$が生成する位相を入れる.
   \setlength{\itemsep}{0pt} 
 % \item $\mathcal{B}$を開基とする位相$\mathscr{U}$が存在することを示せ. 以下$X$にはこの位相を入れたものを考える.
  \item $X$は$T_4$空間であることを示せ.
-\item $x \in X$について, $x$を含む開集合$U \subset X$で$(0,1) \subset \R$と同相であるものが存在することを示せ.
+ \item $X$は第1可算公理を満たすことを示せ.
+%\item $x \in X$について, $x$を含む開集合$U \subset X$で$(0,1) \subset \R$と同相であるものが存在することを示せ.
 \item $X$は第2可算公理を満たさないことを示せ.
 \item $X \times X$は$T_4$空間ではないことを示せ.
+\item $X$は距離化可能でないことを示せ.
 \end{enumerate}
 
 \end{enumerate}
@@ -1589,9 +1594,9 @@ $(X, \mathscr{U})$を位相空間とする．
 \begin{enumerate}
 \setlength{\parskip}{0cm} 
   \setlength{\itemsep}{4pt} 
-  \item  $X$が\underline{$T_0$空間}であるとは, 任意の$a, b \in X$について, 「ある$U \in \mathscr{U}$があって$a \in U$かつ$b \not \in U$」または「ある$V \in \mathscr{U}$があって$b \in V$かつ$a\not \in V$」となること.
-\item $X$が\underline{$T_1$空間}であるとは, 任意の$a, b \in X$についてある$U \in \mathscr{U}$があって$a \in U$かつ$b \not \in U$となること.
-\item $X$が\underline{$T_2$空間またはハウスドルフ空間}であるとは, 任意の$a, b \in X$について, ある$U, V \in \mathscr{U}$があって$a \in U, b \in V, U \cap V = \varnothing $となること.
+  \item  $X$が\underline{$T_0$空間}であるとは, 任意の相異なる2点$a, b \in X$について, 「ある$U \in \mathscr{U}$があって$a \in U$かつ$b \not \in U$」または「ある$V \in \mathscr{U}$があって$b \in V$かつ$a\not \in V$」となること.
+\item $X$が\underline{$T_1$空間}であるとは, 任意の相異なる2点$a, b \in X$についてある$U \in \mathscr{U}$があって$a \in U$かつ$b \not \in U$となること.
+\item $X$が\underline{$T_2$空間またはハウスドルフ空間}であるとは, 任意の相異なる2点$a, b \in X$について, ある$U, V \in \mathscr{U}$があって$a \in U, b \in V, U \cap V = \varnothing $となること.
 \item $X$が\underline{正則空間}であるとは, 任意の$a\in X$と$a$を含まない閉集合$B$について, ある$U, V \in \mathscr{U}$があって$a \in U, B \subset V, U \cap V = \varnothing $となること.
 \item $X$が\underline{$T_3$空間}とは$X$が正則空間で$T_1$空間なること.
 \item $X$が\underline{正規空間}とは, 互いに交わらない閉集合$A,B$について, ある$U, V \in \mathscr{U}$があって$A \subset U, B \subset V, U \cap V = \varnothing $となること.
@@ -1634,7 +1639,7 @@ $(X, \mathscr{U})$を位相空間とする．
    colframe = green!35!black,
     fonttitle = \bfseries,
     breakable = true]
-        $X$を位相空間とする
+        $X$を位相空間とする.
     \begin{enumerate}
     \setlength{\parskip}{0cm} 
   \setlength{\itemsep}{0pt} 
@@ -1661,7 +1666,7 @@ $(X, \mathscr{U})$を位相空間とする．
 
 \item $^{\bullet}$ \ref{cofinite}の補有限位相は連結であることを示せ.
 
-\item $^\bullet$  2次元球面$S^2 \subset \R^3$は連結であることを示せ. \footnote{色々やり方はあるが, 直感的なものは弧状連結を示すものだと思う. (任意の$p \in S^2$は$(1,0,0)$と曲線で結べそうなので. ) 他には全射連続写像$\R^3 \setminus \{ 0\} \to S^2$を構成し, $\R^3 \setminus \{ 0\} $が弧状連結になることを示す. $\R^3 \setminus \{ 0\} $が弧状連結なのは2点が直線か折れ線で結べることを示せば良い}
+\item $^\bullet$  2次元球面$S^2 \subset \R^3$は連結であることを示せ. \footnote{色々やり方はあるが, 直感的なものは弧状連結を示すものだと思う. (任意の$p \in S^2$は$(1,0,0)$と曲線で結べそうなので. ) 他には全射連続写像$\R^3 \setminus \{ 0\} \to S^2$を構成し, $\R^3 \setminus \{ 0\} $が弧状連結になることを示す方法もある. その場合$\R^3 \setminus \{ 0\} $が弧状連結なのは2点が直線か折れ線で結べることを示せば良い.}
 
 \item $X$を\underline{連結}な位相空間, $\{ U_{\lambda}\}_{\lambda \in \Lambda}$を$X$の開集合族, $f : X \to \R$を実数値連続関数とする.
 「任意の$\lambda \in \Lambda$について$f|_{U_{\lambda}} : U_{\lambda} \to \R$が定値写像であるならば, $f$は定値写像である」ことを示せ. また連結という仮定を外した場合この命題は成り立つか?
@@ -1857,7 +1862,7 @@ $$
        \end{matrix}
       $$
 %($[z:w] \in \C\mathbb{P}^1 $に関しては問題7.11の注釈を参照のこと.)
-とするとき, $\varphi$はwell-definedな同相写像であることを示せ. \footnote{$\C\mathbb{P}^1 = \C^2 \setminus \{0\} /\sim $より, $\varphi$は代表元の取り方に依存しそうである. だがこの場合は代表元の取り方に依存しない.それを示せ. (こういうのをwell-defined(うまく定義されている?)という.)}
+とするとき, $\varphi$はwell-definedな同相写像であることを示せ.\footnote{$\C\mathbb{P}^1 = \C^2 \setminus \{0\} /\sim $より, $\varphi$は代表元の取り方に依存しそうである. だがこの場合は代表元の取り方に依存しない.それを示せ. こういうのをwell-defined(うまく定義されている?)という.}
 %\footnote{コンパクトのところで習う定理を用いて良い. \ref{so3}も同様.}
 ただし$\bar{z}$は$z$の複素共役で$|z|^2 = z \bar{z}$とする. また$z \in \C$がある実数$u,v \in \R$を用いて$z = u + \sqrt{-1}v$と表されているとき, ${\rm Re}(z) := u$, ${\rm Im}(z) := v$と定義する. 
 
@@ -1877,31 +1882,30 @@ X^{*} &
 %\item $ \R\mathbb{P}^{1}$は$S^1$と同相であることを示せ.
 
 
-\item \label{axiom}(チコノフの定理は選択公理と同値) \footnote{この問題は気になったので作った. チコノフの定理は選択公理を用いて証明される. ではチコノフの定理から選択公理は導けるのか? 答えはYesである.}
-$\{X_{\lambda} \}_{\lambda \in \Lambda}$を$X_{\lambda} \neq \varnothing$となる集合族とする.
-%選択公理を示すには, 「ある写像
-%$$f : \Lambda \to \bigcup_{\lambda \in \Lambda} X_{\lambda}$$
-%で任意の$\lambda \in \Lambda$について$f(\lambda) \in X_{\lambda}$となる」ものが存在することを示せば良い. 
-次の問いに答えよ. ただしこの問題に限り, 選択公理を仮定してはいけないが, チコノフの定理(コンパクトの積はコンパクト)が成り立つことは仮定して良い. .
-\begin{enumerate}
- \setlength{\parskip}{0cm}
-  \setlength{\itemsep}{0pt} 
-\item $\infty$を$\cup_{\lambda \in \Lambda} X_{\lambda}$に含まれない元とし, $Y_{\lambda}:= X_{\lambda} \cup \{ \infty\}$とする.
-$$
-\mathscr{U}_\lambda = \{U \subset Y_{\lambda} | \text{$Y_{\lambda} \setminus U$は有限集合} \} \cup \{  \varnothing , \{ \infty\} \}
-$$
-とするとき, $(Y_{\lambda}, \mathscr{U}_\lambda)$はコンパクトな位相空間になることを示せ
-\item $p_{\mu}: \prod_{\lambda \in \Lambda} Y_{\lambda} \to Y_{\mu}$を$\mu$成分への射影とする. $\{ p_{\lambda}^{-1}(X_{\lambda})\}_{\lambda \in \Lambda}$は有限交叉性を持つ閉集合の族であることを示せ.
-\item チコノフの定理から$\prod_{\lambda \in \Lambda} Y_{\lambda} $はコンパクトである. 
-これを用いて, 「ある写像$f : \Lambda \to \bigcup_{\lambda \in \Lambda} X_{\lambda}$
-で任意の$\lambda \in \Lambda$について$f(\lambda) \in X_{\lambda}$となる」ものが存在することを示せ. またこのことから「チコノフの定理から選択公理が導ける」ことを示せ. 
-\end{enumerate}
+%\item \label{axiom}(チコノフの定理は選択公理と同値) \footnote{この問題は気になったので作った. チコノフの定理は選択公理を用いて証明される. ではチコノフの定理から選択公理は導けるのか? 答えはYesである.}
+%$\{X_{\lambda} \}_{\lambda \in \Lambda}$を$X_{\lambda} \neq \varnothing$となる集合族とする.
+%%選択公理を示すには, 「ある写像$$f : \Lambda \to \bigcup_{\lambda \in \Lambda} X_{\lambda}$$で任意の$\lambda \in \Lambda$について$f(\lambda) \in X_{\lambda}$となる」ものが存在することを示せば良い. 
+%次の問いに答えよ. ただしこの問題に限り, 選択公理を仮定してはいけないが, チコノフの定理(コンパクトの積はコンパクト)が成り立つことは仮定して良い. .
+%\begin{enumerate}
+ %\setlength{\parskip}{0cm}
+ % \setlength{\itemsep}{0pt} 
+%\item $\infty$を$\cup_{\lambda \in \Lambda} X_{\lambda}$に含まれない元とし, $Y_{\lambda}:= X_{\lambda} \cup \{ \infty\}$とする.
+%$$
+%\mathscr{U}_\lambda = \{U \subset Y_{\lambda} | \text{$Y_{\lambda} \setminus U$は有限集合} \} \cup \{  \varnothing , \{ \infty\} \}
+%$$
+%とするとき, $(Y_{\lambda}, \mathscr{U}_\lambda)$はコンパクトな位相空間になることを示せ
+%\item $p_{\mu}: \prod_{\lambda \in \Lambda} Y_{\lambda} \to Y_{\mu}$を$\mu$成分への射影とする. $\{ p_{\lambda}^{-1}(X_{\lambda})\}_{\lambda \in \Lambda}$は有限交叉性を持つ閉集合の族であることを示せ.
+%\item チコノフの定理から$\prod_{\lambda \in \Lambda} Y_{\lambda} $はコンパクトである. 
+%これを用いて, 「ある写像$f : \Lambda \to \bigcup_{\lambda \in \Lambda} X_{\lambda}$
+%で任意の$\lambda \in \Lambda$について$f(\lambda) \in X_{\lambda}$となる」ものが存在することを示せ. またこのことから「チコノフの定理から選択公理が導ける」ことを示せ. 
+%\end{enumerate}
 
 
 %\footnote{ヒント: $f(\R)$は$T^2$にぐるぐる巻きついている. }
 %\hspace{-55pt}\underline{以下の問題は発展的な内容である.(余力のある人がやってください.)} %(個人的には\ref{stone} \ref{Gelfand}は面白いと思う.)
 
-\item $^{**}$ $X$を位相空間とする. 次は同値であることを示せ.\footnote{(iii)から(i)がかなり難しい. 難しければ(i) $\Rightarrow$ (ii) $\Rightarrow$ (iii)だけを発表しても良い. }
+\item \label{compact_equi} $X$を位相空間とし, 次の3条件を考える. 
+%\footnote{(iii)から(i)がかなり難しい. 難しければ(i) $\Rightarrow$ (ii) $\Rightarrow$ (iii)だけを発表しても良い. }
 \begin{enumerate}[label=(\roman*)]
  \setlength{\parskip}{0cm}
   \setlength{\itemsep}{0pt} 
@@ -1909,7 +1913,9 @@ $$
 \item 任意の位相空間$Y$, 任意の$y \in Y$, $X \times \{ y\}$の任意の開近傍$W \subset X \times Y$について, ある$y$の開近傍$V \subset Y$があって, $X \times V \subset W$となる.
 \item 任意の位相空間$Y$に対し第2射影$p_{2} : X \times Y \rightarrow Y$, $p_2(x,y)=y$は閉写像である. 
 \end{enumerate}
+(i) $\Rightarrow$ (ii) $\Rightarrow$ (iii)を示せ. つまり「(i)が成り立つならば, (ii)が成り立つこと」および「(ii)が成り立てば(iii)が成り立つこと」を示せ. 
 
+\item $^{**}$ \ref{compact_equi}において, (iii) $\Rightarrow$ (i)を示せ. つまり「(iii)が成り立つならば(i)が成り立つこと」を示せ. よって \ref{compact_equi}の3条件(i), (ii), (iii)は同値である.
 
 
  \end{enumerate}
@@ -1941,9 +1947,9 @@ $$
 
 
 この問題たちは興味本位で作った問題である.  %ただ中には意外と解けるものもある.実際\ref{stone}〜\ref{foliation}は去年の演習で解かれた. 
-\ref{stone}, \ref{Gelfand}は去年やって面白かったので今年も出すことにした. 実は\ref{cofinite}や\ref{Zariski_topology}に関係がある. \footnote{Grothendieckによる代数幾何の基礎づけに関わる. (空間が先か環が先か)この問題を作った後にGrothendieckが初め研究してたのは関数解析・作用素環であること思い出した. 実はAtiyah-Macdonaldにも似たような問題がある(おそらくAtiyahが作った問題だと思う.)} \ref{foliation}も去年作った問題である. 私が研究でよく使う葉層に関する問題である.
+\ref{stone}, \ref{Gelfand}は去年やって面白かったので今年も出すことにした. 実は\ref{cofinite}や\ref{Zariski_topology}に関係がある. \footnote{Grothendieckによる代数幾何の基礎づけに関わる. (空間が先か環が先か)この問題を作った後にGrothendieckが初め研究してたのは関数解析・作用素環であること思い出した. 実はAtiyah-Macdonaldにも似たような問題がある. おそらくAtiyahが作った問題だと思う.} \ref{foliation}も去年作った問題である. 私が研究でよく使う葉層に関する問題である.
  \ref{kodaira}, \ref{algebraic}は複素解析の演習で出した問題の一部である. %TAさんが喜びそうなのでだすことにした.
- \ref{so3}は去年作った問題である. かなり面倒なのであんまり良くない問題である. 
+ \ref{so3}は去年作った問題である. かなり面倒なのであんまり良くない問題である. \ref{HCC}は面白いので入れてみた. なおこの問題を作ったとき, 私は答えを知らなかった. 
 
 以下断りがなければ$\R^{n}$にはユークリッド位相を入れたものを考える. 
 \begin{enumerate}[label=\textbf{問}\ref*{sec-compact_continue}.\arabic*]
@@ -2020,7 +2026,7 @@ $$
     colframe = green!35!black,
     fonttitle = \bfseries,
     breakable = true]
- \bf{ 定理:}  $f$を領域(連結開集合)$\Omega \subset \C$上の正則関数とするとき, $f$は開写像である.
+ \bf{ 定理:}  $f$を領域(連結開集合)$\Omega \subset \C$上の定数でない正則関数とするとき, $f$は開写像である.
  \end{tcolorbox}
 
 
@@ -2031,8 +2037,9 @@ $SO(3,\R)$は$\R\mathbb{P}^{3}$と同相であることを示せ.\footnote{ヒ�
 
 
 
-\item $^{*}$ \ref{point}〜\ref{Sorgenfrey}, \ref{Zariski_topology}, \ref{Furstenberg}, \ref{Sor2}, \ref{longray}で出てきた位相空間のハウスドルフ性・コンパクト性・連結性を各々調べよ.
-なおこの問題は何回も答えて良いし複数人が分担して解答してもよい. また選んだ空間によって配点が異なる. 
+\item \label{HCC}$^{* \sim **}$\ref{point}〜\ref{Sorgenfrey}, \ref{Zariski_topology}, \ref{Furstenberg}, \ref{Sor2}, \ref{longray}で出てきた位相空間のハウスドルフ性・コンパクト性・連結性を各々調べよ.
+なおこの問題は何回も答えて良いし複数人が分担して解答してもよい. 
+また選んだ空間によって配点が異なる. \footnote{現時点では0.5点以上であるとしかいえない. つまり$^{*}$がついている問題だが0.5点しかもらえない場合もある. なお難しい位相空間もあるので$*$をつけた).}
 
 \end{enumerate}
 
