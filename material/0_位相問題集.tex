@@ -272,7 +272,7 @@ $$
   \setlength{\itemsep}{0pt} 
 \item $(\R^n, d_{1})$は距離空間であることを示せ. 
 \item $(\R^n, d_{1})$はマンハッタン距離と呼ばれる. マンハッタンはどこの地名か答えよ. \footnote{余力があればその都市形状を図示せよ.}
-\item 恒等写像$i : (\R^n, d_{1}) \to (\R^n, d_{E})$, $i(x)=x$は連続写像であることを示せ. 
+\item 恒等写像$i : (\R^n, d_{1}) \to (\R^n, d_{E})$, $i(x)=x$は連続であることを示せ. 
 \end{enumerate}
 
 
@@ -468,7 +468,7 @@ $$
 	\end{enumerate}
 
 		
-\item $\R$に関して部分集合の族$\mathscr{U}_{sc} \subset \mathcal{P}(\R)$を次で定める.
+\item \label{scat} $\R$に関して部分集合の族$\mathscr{U}_{sc} \subset \mathcal{P}(\R)$を次で定める.
 $$
 \mathscr{U}_{sc}  = \{U \cup A \subset \R | \text{$U$はユークリッド位相に関する開集合, $A$は$\R \setminus \Q$の部分集合}\}
 $$
@@ -538,7 +538,7 @@ $\Z$を整数の集合とする.
 %I = (a) :=  \{ x \in \Z | \text{ある$b \in \Z$があって$x =ab$}\}
 %$$
 とかけることを示せ. 
-\footnote{ヒント: イデアル$I$の０でない元で絶対値が一番小さいものが$a$の候補となる. またどちらかの包含を示す際に, $I$の元を$a$で割った余りを考えよ. }
+\footnote{ヒント: イデアル$I$の0でない元で絶対値が一番小さいものが$a$の候補となる. またどちらかの包含を示す際に, $I$の元を$a$で割った余りを考えよ. }
 \item 素イデアル$\mathfrak{p}  \subset \Z$を全て求めよ. \footnote{ヒント: 素イデアルは英語でprime idealという. ただしprime以外にも素イデアルになるものがある.}
 \item ${\rm Spec}(\Z)$ を$\Z$の素イデアル全体の集合とする. また整数$n$について
 $$
@@ -1475,7 +1475,7 @@ $$
 \item $^{*}$
 	\ref{cpxproj}の複素射影空間$\C\mathbb{P}^{n}$はハウスドルフ空間であることを示せ.
 
-\item $^{**}$ $1 \leqq k < n$となる自然数について, 
+\item \label{grassmann}$^{**}$ $1 \leqq k < n$となる自然数について, 
 $A_{k, n}$を$k \times n$実数行列でランクが$k$となる行列全体の集合とし, $\R^{kn}$の部分集合とみなすことで$A_{k,n}$に$\R^{kn}$の相対位相を入れる. 
 $A_{k, n}$に同値関係$\sim$を
 $$
@@ -1526,7 +1526,7 @@ $$
 	\setlength{\parskip}{0cm} 
   \setlength{\itemsep}{7pt} 
 	
-\item  \label{Sor2} $^{**}$ (Sorgenfrey plane) $\R^2$において
+\item  \label{Sor2} $^{*}$ (Sorgenfrey plane) $\R^2$において
 $$
 \mathscr{B} = \{(a,b] \times (c,d]| a,b,c,d \in \R, a<b, c<d\} 
 $$
@@ -1539,7 +1539,10 @@ $$
 	\item $ A=\{ (x,y)\in \R^2 | x+y=1\}$とし, $A$に$(\R^2,\mathscr{U})$の相対位相$\mathscr{U}_A$を入れる. このとき$\mathscr{U}_A$は離散位相であることを示せ. また$A$は可分でないことを示せ.
 	\item $(\R^2,\mathscr{U})$は第2可算公理を満たさないことを示せ.
 	\end{enumerate}
-\item \label{longray}$^{*}$ (long ray) $X:=\R \times [0,1)$とし, $X$に次の順序を入れる.
+	
+	
+	
+\item \label{longray}$^{**}$ (long ray) $X:=\R \times [0,1)$とし, $X$に次の順序を入れる.
 	$$
 (x,a) \le (y,b) \Leftrightarrow \text{「$x<y$」または「$x=y$かつ$a \leqq b$」} 
 	$$	
@@ -1742,7 +1745,7 @@ $$
 %が成り立つ」ならば, 
 %$f$は$\R \mathbb{P}^n$を$\R$の一点へ写す定値写像であることを示せ. 
 
-\item $^{*}$ $M(n,\R)$を$n\times n$行列の全体の集合とする.  $M(n,\R)$を$\R^{n^2}$と同一視をし, ユークリッド位相を入れる. 次の問いに答えよ.
+\item \label{gl} $^{*}$  $M(n,\R)$を$n\times n$行列の全体の集合とする.  $M(n,\R)$を$\R^{n^2}$と同一視をし, ユークリッド位相を入れる. 次の問いに答えよ.
 	\begin{enumerate}
 		\setlength{\parskip}{0cm} 
   \setlength{\itemsep}{0pt} 
@@ -1750,7 +1753,7 @@ $$
 	\item $GL(n, \R)_{+}:=\{ A \in M(n,\R) | \det A > 0\}$とし, $M(n,\R)$の相対位相を入れる.このとき$GL(n, \R)_{+}$は弧状連結であること示せ.
 	\end{enumerate}
 
-\item $^{**}$ $SO(n, \R) = \{ A \in M(n,\R) | \det A =1, {}^{t}AA =E\}$に$M(n,\R)$の相対位相を入れる. このとき, $SO(n, \R)$は弧状連結であることを示せ.
+\item  \label{son} $^{*}$ $SO(n, \R) = \{ A \in M(n,\R) | \det A =1, {}^{t}AA =E\}$に$M(n,\R)$の相対位相を入れる. このとき, $SO(n, \R)$は弧状連結であることを示せ.
 
  	\end{enumerate}
  
@@ -1979,7 +1982,7 @@ $$
 $$
 T(f)(y) = f(\varphi(y)) \quad  (\forall f\in C(X), \forall y \in Y)
 $$
-となるものが存在することを示せ. \footnote{ヒント: \ref{stone}を使って$\varphi$を構成する. 連続性は$X$の閉集合の逆像が$Y$の閉集合であることを示せば良い. ウリゾーンの補題が効いてくる}
+となるものが存在することを示せ. \footnote{ヒント: \ref{stone}を使って$\varphi$を構成する. 連続性は$X$の閉集合の逆像が$Y$の閉集合であることを示せば良い. ウリゾーンの補題が効いてくる.}
 また$T$が全単射ならば$\varphi$は同相であることを示せ.
 
  \item \label{foliation}$^{*}$ 2次元トーラス$T^2$を\ref{torus}のように定義する. 0でない実数$\alpha$について, $f_{\alpha}: \R \rightarrow T^2$を$f_{\alpha}(x) =  (x, \alpha x)$で定め, $f_{\alpha}(\R) \subset T^2$に$T^2$の相対位相を入れる. 次の問いに答えよ.
@@ -2008,7 +2011,7 @@ $
 $$
 z\sim_{\tau} w \Leftrightarrow \text{ある$m,n \in \Z$があって, $w-z = m+n\tau$となる}
 $$
-で定める. そして$T_{\tau} := \C/\sim_{\tau}$とし商位相を入れる. ($T_{1}$は\ref{torus}での2次元トーラスと同じことに注意する.)
+で定める. そして$T_{\tau} := \C/\sim_{\tau}$とし商位相を入れる.\footnote{$T_{\sqrt{-1}}$は\ref{torus}での2次元トーラスと同じことに注意する.}
  任意の$\tau_1, \tau_2 \in \mathbb{H}$について, $T_{\tau_1}$と$T_{\tau_2}$は同相であることを示せ. \footnote{もっと強く実は$C^{\infty}$級同型はいえる. しかし複素構造が異なる場合がある. これを詳しく調べたのが小平邦彦とD.C.スペンサーであり, のちに小平・スペンサーの変形理論につながる. ちなみに小平邦彦は日本人初のフィールズ賞受賞者である. }
 
 \item \label{algebraic} $^{*}$(開写像定理を用いた代数学の基本定理の証明) $f(z) = z^n + a_1 z^{n-1}+ \cdots + a_{n-1}z + a_n$とし, $n \geqq 1, a_n \neq 0$とする.  以下の問いに答えよ.
@@ -2037,9 +2040,18 @@ $SO(3,\R)$は$\R\mathbb{P}^{3}$と同相であることを示せ.\footnote{ヒ�
 
 
 
-\item \label{HCC}$^{* \sim **}$\ref{point}〜\ref{Sorgenfrey}, \ref{Zariski_topology}, \ref{Furstenberg}, \ref{Sor2}, \ref{longray}で出てきた位相空間のハウスドルフ性・コンパクト性・連結性を各々調べよ.
-なおこの問題は何回も答えて良いし複数人が分担して解答してもよい. 
-また選んだ空間によって配点が異なる. \footnote{現時点では0.5点以上であるとしかいえない. つまり$^{*}$がついている問題だが0.5点しかもらえない場合もある. なお難しい位相空間もあるので$*$をつけた).}
+\item $* $\label{HCC}次の空間のハウスドルフ性・連結性・コンパクト性を各々調べよ. なおこの問題は何回も答えて良いし複数人が分担して解答してもよい. また選んだ空間によって配点が異なる. \footnote{現時点では0.5点以上であるとしかいえない. つまり$^{*}$がついている問題だが0.5点しかもらえない場合もある. なお難しい位相空間もあるので$*$をつけた.} 
+今回答えやすいように難易度別に分類した. 難易度が高い方が配点も高いものとする.\footnote{ただし\ref{realproj}のように演習問題でハウスドルフなどを示している場合はその事実を使って良いものとする. もしその問題が解かれていない場合はその問題を先に解くこと. この難易度は全ての問題が解かれていると仮定した場合の難易度である.} 
+\begin{itemize}
+\setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item[難易度 Easy$\sim$Normal] \ref{conti}, \ref{point}, \ref{usc}, \ref{scat}, \ref{Sorgenfrey},
+ $\R\mathbb{P}^n$と$\C\mathbb{P}^n$(\ref{realproj}と\ref{cpxproj}), グラスマン多様体(\ref{grassmann}), $GL(n,\R)$と$GL(n,\R)_{>0}$(\ref{gl}), $SO(n,\R)$ (\ref{son}), 
+\item[難易度 Hard]  \ref{Zariski_topology},  \ref{Furstenberg}, \ref{Sor2}, \ref{longray}, $(\Q_p, d_p)$(\ref{Qp}), $\Z_p$ (\ref{Zp})
+\end{itemize}
+
+ %\ref{Furstenberg},\ref{Sor2}, \ref{longray}
+%で出てきた位相空間のハウスドルフ性・コンパクト性・連結性を各々調べよ.なおこの問題は何回も答えて良いし複数人が分担して解答してもよい. また選んだ空間によって配点が異なる. \footnote{現時点では0.5点以上であるとしかいえない. つまり$^{*}$がついている問題だが0.5点しかもらえない場合もある. なお難しい位相空間もあるので$*$をつけた.}
 
 \end{enumerate}
 
@@ -2213,7 +2225,7 @@ $d(A,B) := \inf_{a \in A, b \in B} d(a,b)$
 
 
 
- \item $^{*}$ $p$を素数とし, \ref{p-adic}のように$\Q$の距離$d_{p}$をとる. 
+ \item \label{Qp}$^{*}$ $p$を素数とし, \ref{p-adic}のように$\Q$の距離$d_{p}$をとる. 
 %\item $(\Q, d_{p})$は完備でないことを示せ. 
 $\Q_p$を$\Q$の$d_{p}$による完備化とする. また完備化によって誘導される$\Q_p$上の距離を$d_{p}$と同じ記号で書くことにする.
 次の問いに答えよ.
@@ -2226,7 +2238,7 @@ $\lim_{n \rightarrow \infty}|a_n|_{p} = 0$ であることと同値であるこ�
 \item $b_n \in \{0,1,2,3,4\}$かつ$(\Q_5,d_{5})$上で$\frac{20}{24} = \sum_{n=0}^{\infty} b_n 5^n$となるような数列$\{b_n\}_{n=0}^{\infty}$を決定せよ.
 \end{enumerate}
 
-\item $^{**}$ $p$を素数とする. 2以上の自然数$n$について$\pi_{n} : \Z/p^n \Z \to \Z/p^{n-1} \Z$を標準的な射影とする.
+\item \label{Zp} $^{**}$ $p$を素数とする. 2以上の自然数$n$について$\pi_{n} : \Z/p^n \Z \to \Z/p^{n-1} \Z$を標準的な射影とする.
 $$
 \Z_{p}:= \left\{ \{ a_{n} \}_{n=1}^{\infty}\in \prod_{n=1}^{\infty} \Z/p^n \Z  \, \Big{|} \,\text{2以上の自然数$i$について} \pi_{i}(a_{i}) = a_{i-1} \right\} \subset \prod_{n=1}^{\infty} \Z/p^n \Z 
 $$
