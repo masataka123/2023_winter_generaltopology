@@ -1,0 +1,477 @@
+\documentclass[dvipdfmx,a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[dvipdfmx]{hyperref} %リンクを有効にする
+\usepackage{url} %同上
+\usepackage{amsmath,amssymb} %もちろん
+\usepackage{amsfonts,amsthm,mathtools} %もちろん
+\usepackage{braket,physics} %あると便利なやつ
+\usepackage{bm} %ラプラシアンで使った
+\usepackage[top=15truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry} %余白設定
+\usepackage{latexsym} %ごくたまに必要になる
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\usepackage{otf} %宗教上の理由でmin10が嫌いなので
+\usepackage{showkeys}\renewcommand*{\showkeyslabelformat}[1]{\fbox{\parbox{2cm}{ \normalfont\tiny\sffamily#1\vspace{6mm}}}}
+\usepackage[driverfallback=dvipdfm]{hyperref}
+
+
+\usepackage[all]{xy}
+\usepackage{amsthm,amsmath,amssymb,comment}
+\usepackage{amsmath}    % \UTF{00E6}\UTF{0095}°\UTF{00E5}\UTF{00AD}\UTF{00A6}\UTF{00E7}\UTF{0094}¨
+\usepackage{amssymb}  
+\usepackage{color}
+\usepackage{amscd}
+\usepackage{amsthm}  
+\usepackage{wrapfig}
+\usepackage{comment}	
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{pxrubrica}
+\usepackage{enumitem}
+\usepackage{mathrsfs} 
+
+\setstretch{1.2}
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}} 
+\newcommand{\Sin}{\text{Sin}^{-1}} 
+\newcommand{\Cos}{\text{Cos}^{-1}} 
+\newcommand{\Tan}{\text{Tan}^{-1}} 
+\newcommand{\invsin}{\text{Sin}^{-1}} 
+\newcommand{\invcos}{\text{Cos}^{-1}} 
+\newcommand{\invtan}{\text{Tan}^{-1}} 
+\newcommand{\Area}{\text{Area}}
+\newcommand{\vol}{\text{Vol}}
+\newcommand{\maru}[1]{\raise0.2ex\hbox{\textcircled{\tiny{#1}}}}
+\newcommand{\sgn}{{\rm sgn}}
+%\newcommand{\rank}{{\rm rank}}
+
+
+
+   %当然のようにやる．
+\allowdisplaybreaks[4]
+   %もちろん．
+%\title{第1回. 多変数の連続写像 (岩井雅崇, 2020/10/06)}
+%\author{岩井雅崇}
+%\date{2020/10/06}
+%ここまで今回の記事関係ない
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins, theorems}
+
+\theoremstyle{definition}
+\newtheorem{thm}{定理}
+\newtheorem{lem}[thm]{補題}
+\newtheorem{prop}[thm]{命題}
+\newtheorem{cor}[thm]{系}
+\newtheorem{claim}[thm]{主張}
+\newtheorem{dfn}[thm]{定義}
+\newtheorem{rem}[thm]{注意}
+\newtheorem{exa}[thm]{例}
+\newtheorem{conj}[thm]{予想}
+\newtheorem{prob}[thm]{問題}
+\newtheorem{rema}[thm]{補足}
+
+\DeclareMathOperator{\Ric}{Ric}
+\DeclareMathOperator{\Vol}{Vol}
+ \newcommand{\pdrv}[2]{\frac{\partial #1}{\partial #2}}
+ \newcommand{\drv}[2]{\frac{d #1}{d#2}}
+  \newcommand{\ppdrv}[3]{\frac{\partial #1}{\partial #2 \partial #3}}
+
+
+%ここから本文．
+\begin{document}
+\pagestyle{empty}
+
+
+\begin{center}
+{\Large 2023年度 幾何学基礎2(位相空間論)演義 期末レポート 1枚目} \\
+
+\vspace{5pt}
+{ \large 提出日 2024年2月6日(火) 15時10分00秒 (日本標準時刻)}
+\end{center}
+
+\vspace{2pt}
+\begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8cm} } }
+\end{flushleft}
+
+\begin{center}
+ {\large 問題の下に答えを書きこの用紙を提出してください. 裏面も使用して良い.}
+  \end{center}
+  
+   {\large 第1問.} $(X,d)$を距離空間とし, $\{ x_{k}\}_{k=1}^{\infty}$を$X$の点列とする.  $\{ x_{k}\}_{k=1}^{\infty}$がコーシー列であり, ある部分列$\{ x_{k_{i}}\}_{i=1}^{\infty}$が$\alpha \in X$に収束するならば, $\{ x_{k}\}_{k=1}^{\infty}$は$\alpha$に収束することを示せ. ただし$0<k_1<k_2<\cdots$であると仮定して良い. 
+   
+
+\newpage
+
+\begin{center}
+{\Large 2023年度 幾何学基礎2(位相空間論)演義 期末レポート 2枚目} \\
+
+\vspace{5pt}
+{ \large 提出日 2024年2月6日(火) 15時10分00秒 (日本標準時刻)}
+\end{center}
+
+\vspace{2pt}
+\begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8cm} } }
+\end{flushleft}
+
+\begin{center}
+ {\large 問題の下に答えを書きこの用紙を提出してください. 裏面も使用して良い.}
+  \end{center}
+  
+ {\large 第2問.}  $\R$に関して部分集合の族$\mathscr{U}_c \subset \mathcal{P}(\R)$を次で定める.
+$$
+\mathscr{U}_c = \{V \subset \R | \text{$\R \setminus V$は有限集合} \} \cup \{  \varnothing  \}
+$$
+%次の問いに答えよ.
+	\begin{enumerate}
+	\setlength{\parskip}{0cm}
+  	\setlength{\itemsep}{0pt} 
+	\item $(\R,\mathscr{U}_c)$は位相空間になることを示せ.
+	%\item $\R$のユークリッド位相を$\mathscr{U}_{Euc}$とするとき$\mathscr{U}_c  \subset \mathscr{U}_{Euc}$を示せ. 
+	\item $\{ 0 \}$は$(\R,\mathscr{U}_c)$で開集合になるか? また閉集合になるか?
+	%\item $A \in \mathscr{U}_{Euc}$かつ$A \not \in \mathscr{U}_c$なる$A$の例を一つあげよ.
+	\item $(\R,\mathscr{U}_c)$はハウスドルフではないことを示せ.
+	\item $(\R,\mathscr{U}_c)$は連結であることを示せ.
+	\item $(\R,\mathscr{U}_c)$はコンパクトであることを示せ. 
+	\end{enumerate}
+
+\newpage
+\begin{center}
+{\Large 2023年度 幾何学基礎2(位相空間論)演義 期末レポート 3枚目} \\
+
+\vspace{5pt}
+{ \large 提出日 2024年2月6日(火) 15時10分00秒 (日本標準時刻)}
+\end{center}
+
+\vspace{2pt}
+\begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8cm} } }
+\end{flushleft}
+
+\begin{center}
+ {\large 問題の下に答えを書きこの用紙を提出してください. 裏面も使用して良い.}
+  \end{center}
+   {\large 第3問.}  以下$f : X \rightarrow Y$を位相空間の間の連続写像とする. 次の問いに答えよ.
+	\begin{enumerate}
+	\setlength{\parskip}{0cm}
+  	\setlength{\itemsep}{0pt} 
+	\item $f$が単射かつ$Y$がハウスドルフならば, $X$もハウスドルフであることを示せ. 
+	\item $f$が全射かつ$X$が連結ならば, $Y$も連結であることを示せ. 
+	\item $f$が全射かつ$X$がコンパクトならば, $Y$もコンパクトであることを示せ.
+	%\item コンパクト位相空間の閉集合はコンパクトであることを示せ. 
+	\end{enumerate}
+
+\newpage
+\begin{center}
+{\Large 2023年度 幾何学基礎2(位相空間論)演義 期末レポート 4枚目} \\
+
+\vspace{5pt}
+{ \large 提出日 2024年2月6日(火) 15時10分00秒 (日本標準時刻)}
+\end{center}
+
+\vspace{2pt}
+\begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8cm} } }
+\end{flushleft}
+
+\begin{center}
+ {\large 問題の下に答えを書きこの用紙を提出してください. 裏面も使用して良い.}
+  \end{center}
+
+   {\large 第4問.}   $\R^2$に対し同値関係$\sim$を
+$$
+(x_1, y_1)\sim (x_2, y_2) \Leftrightarrow x_1 - x_2 \in \Z \text{かつ} y_1 - y_2 \in \Z 
+$$
+で定め, 2次元トーラス$T^2 := \R^2/\sim$とする.
+$\pi : \R^2 \rightarrow T^2$という商写像により$T^2$に商位相を入れる.
+次の問いに答えよ. ただし$\R^n$にはユークリッド位相を入れたものを考える. また授業で示した定理や期末レポート第3問の結果を用いて良い. %$T^2$はハウスドルフ空間であることを次の手順で示せ.
+\begin{enumerate}
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $T^2$はコンパクト空間であることを示せ. %連結なコンパクト空間であることを示せ. 
+\item $f : \R^2 \rightarrow S^1 \times S^1$を$f(s,t) = (\cos 2 \pi s, \sin 2 \pi s,\cos 2 \pi t, \sin 2 \pi t)$とする. このときある連続写像$\widetilde{f}: T^2 \rightarrow S^1 \times S^1$で$f = \widetilde{f} \circ \pi $となるものが存在することを示せ. 
+\item $S^1 \times S^1 \subset \R^4$に相対位相を入れる. $S^1 \times S^1$はハウスドルフであることを示せ.
+\item $\widetilde{f}$は全単射であることがわかっている. これを用いて$\widetilde{f}$は同相写像であることを示せ. また$T^2$はハウスドルフ空間であることを示せ.
+
+  \end{enumerate}
+
+  \newpage
+  
+  
+\begin{center}
+{\Large 2023年度 幾何学基礎2(位相空間論)演義 期末レポート  解答例} \\
+
+\vspace{5pt}
+%{ \large 提出日 2024年月日(火) 15時10分00秒 (日本標準時刻)}
+\end{center}
+
+%\vspace{2pt}
+%\begin{flushleft}
+%{ \large \underline{学籍番号: \hspace{4cm} 名前 岩井雅崇 \hspace{8cm} } }
+%\end{flushleft}
+
+%\begin{center}
+ %{\large 各問題の下に答えを書きこの用紙を提出してください. 問題は両面ある. }
+ % \end{center}
+   
+   {\large 第1問.} $(X,d)$を距離空間とし, $\{ x_{k}\}_{k=1}^{\infty}$を$X$の点列とする.  $\{ x_{k}\}_{k=1}^{\infty}$がコーシー列であり, ある部分列$\{ x_{k_{i}}\}_{i=1}^{\infty}$が$\alpha \in X$に収束するならば, $\{ x_{k}\}_{k=1}^{\infty}$は$\alpha$に収束することを示せ. ただし$0<k_1<k_2<\cdots$であると仮定して良い. 
+   
+ \vspace{10pt}
+
+[解答例] 
+任意の$\epsilon >0$についてある$N>0$があって, $N<n$ならば$d(x_{n}, \alpha)<\epsilon$であることを示せば良い. 
+以下 $\epsilon >0$を固定する. 
+$\{ x_{k}\}_{k=1}^{\infty}$はコーシー列なので, ある$N_1$があって, $N_1 < n,m$ならば
+$d(x_m, x_n) < \frac{\epsilon}{2}$となる.
+部分列$\{ x_{k_{i}}\}_{i=1}^{\infty}$が$\alpha \in X$に収束するので, ある$N_2$があって, $N_2 < n$ならば
+$d(x_{k_n}, \alpha) <  \frac{\epsilon}{2}$となる.
+また$0<k_1<k_2<\cdots$の仮定から, $n\le k_n$である. 
+
+よって$N=\max(N_1, N_2)$とおくと, $N<n$ならば$N<n\le k_n$であるので, 
+$$d(x_{n}, \alpha)\le d(x_{n}, x_{k_n}) + d(x_{k_n}, \alpha) < \frac{\epsilon}{2}+ \frac{\epsilon}{2} = \epsilon$$
+となる. よって$\{ x_{k}\}_{k=1}^{\infty}$は$\alpha$に収束する.
+
+
+ \vspace{15pt}
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = green!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    今回期末レポートの解答を配った理由は次のとおりです.
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item 期末試験の勉強に役立てて欲しいから.
+    \item 普通にレポートを出すとレポートを写す学生が現れるから. 現状レポート丸写しを罰する方法はあんまりないです. (ちなみにレポート丸写しはすぐバレます. )  %ただレポートを写す時間があるのなら, その時間を使って位相の勉強をした方が良いと思われるので. 
+    \end{enumerate}
+    なおこの解答を写せばレポートを提出したことにはなります. 
+    ただ期末試験前にレポートを解答丸写しする時間があるのであれば, その時間を使って位相の勉強をした方が良いと思いませんか?
+    このレポートが期末試験の勉強に役立つことを祈っております. 
+    
+\vspace{2pt}    
+    なお解答を配布しているため, (ガイダンスでも言ったことですが)期末レポートの演習点は非常に低いです. このレポートは演習で発表しなかった人への救済措置用でもあります. 演習で発表しなかった人は必ず提出してください. 
+ \end{tcolorbox}
+
+\newpage
+ {\large 第2問.}  $\R$に関して部分集合の族$\mathscr{U}_c \subset \mathcal{P}(\R)$を次で定める.
+$$
+\mathscr{U}_c = \{V \subset \R | \text{$\R \setminus V$は有限集合} \} \cup \{  \varnothing  \}
+$$
+%次の問いに答えよ.
+	\begin{enumerate}
+	\setlength{\parskip}{0cm}
+  	\setlength{\itemsep}{0pt} 
+	\item $(\R,\mathscr{U}_c)$は位相空間になることを示せ.
+	%\item $\R$のユークリッド位相を$\mathscr{U}_{Euc}$とするとき$\mathscr{U}_c  \subset \mathscr{U}_{Euc}$を示せ. 
+	\item $\{ 0 \}$は$(\R,\mathscr{U}_c)$で開集合になるか? また閉集合になるか?
+	%\item $A \in \mathscr{U}_{Euc}$かつ$A \not \in \mathscr{U}_c$なる$A$の例を一つあげよ.
+	\item $(\R,\mathscr{U}_c)$はハウスドルフではないことを示せ.
+	\item $(\R,\mathscr{U}_c)$は連結であることを示せ.
+	\item $(\R,\mathscr{U}_c)$はコンパクトであることを示せ. 
+	\end{enumerate}
+
+\vspace{10pt}
+
+[解答例] 1. 位相の3条件を調べる.
+	\begin{enumerate}
+	\setlength{\parskip}{0cm}
+  	\setlength{\itemsep}{0pt} 
+\item[条件1.] $X \setminus X = \varnothing$より, $X \in \mathscr{U}_c$. 定義から$\varnothing\in \mathscr{U}_c$である. 
+\item[条件2.] $U_1, \ldots, U_n \in \mathscr{U}_c$ならば$\cap_{i=1}^{n} U_{i} \in \mathscr{U}_c$を示す. ある$i$で$U_{i} = \varnothing$ならば$\cap_{i=1}^{n} U_{i} = \varnothing \in  \mathscr{U}_c$である. 全ての$i$で$U_{i} \neq \varnothing$ならば
+$$\R \setminus \bigcap_{i=1}^{n} U_{i} = \bigcup_{i=1}^{n}(\R \setminus  U_{i}) $$
+により右辺は有限集合の有限和であるため有限集合である. よって$\cap_{i=1}^{n} U_{i} \in \mathscr{U}_c$である.
+\item[条件3.] $\{ U_{\lambda}\}_{\lambda \in \Lambda}$を$\mathscr{U}_c$の元からなる集合系ならば$\cup_{\lambda\in \Lambda}U_{\lambda} \in \mathscr{U}_c$を示す.  全ての$\lambda$で$U_{\lambda} =\varnothing$ならば$\cup_{\lambda\in \Lambda}U_{\lambda} = \varnothing \in \mathscr{U}_c$である. ある$\lambda_{0}$で$U_{\lambda_0} \neq \varnothing$ならば
+$$\R \setminus \bigcup_{\lambda\in \Lambda}U_{\lambda} \subset  \R \setminus  U_{\lambda_0}  $$
+により右辺は有限集合であることから, $\R \setminus \cup_{\lambda\in \Lambda}U_{\lambda}$も有限集合である. 
+よって$\cup_{\lambda\in \Lambda}U_{\lambda} \in \mathscr{U}_c$である.
+	\end{enumerate}
+
+2. $\{ 0\} \neq \varnothing$かつ$\R \setminus \{ 0\}$は無限集合であるので, $\{0\}$は開集合ではない.
+一方$\R \setminus \{0 \}$は$\R\setminus (\R \setminus \{ 0\})=\{ 0\}$であるため開集合である.
+よって$\{0\}$は閉集合である.
+
+3. ハウスドルフでないこと, つまり「ある2点$a,b \in \R$があって, 任意の開集合$a \in U, b \in V$について$U \cap V \neq \varnothing$」を示せば良い.
+
+$a=0, b=1$とする. 0を含む開集合$U$と1を含む開集合$V$について, $(\R \setminus U )\cup (\R \setminus V)$は有限集合なので, 
+$(\R \setminus U )\cup (\R \setminus V)$に属さない$\R$の元$x$が取れる. 
+$$\R \setminus (U \cap V) = (\R \setminus U )\cup (\R \setminus V)$$
+であることから, $x \in U \cap V$であり, $U \cap V \neq \varnothing$である. 
+
+4. 「$U$が空でない開集合かつ閉集合ならば, $U=\R$であること」を示せば良い.
+
+$U$を空でない$(\R,\mathscr{U}_c)$の開集合かつ閉集合とする. $U$は空でないので, $\R \setminus U$は有限集合である. 
+もし$\R\setminus U \neq \varnothing$であれば, $\R \setminus U$は開集合なので, $U$は有限集合となるが, 
+$\R = U  \cup (\R \setminus U)$により$\R$が有限集合になり矛盾する.
+よって$\R\setminus U = \varnothing$であり, $U = \R$となる. 
+
+5. $\{ U_{\lambda}\}_{\lambda \in \Lambda}$を$\R$の開被覆とする.
+ある有限個の元$U_{\lambda_0}, \ldots, U_{\lambda_l}$があって$\R = \cup_{i=0}^{l} U_{\lambda_i}$であることを示す.
+
+$0 \in \R$よりある$\lambda_{0}$があって$0 \in U_{\lambda_0}$である. 
+$U_{\lambda_0}=\R$ならば, $\R$は1個の元$U_{\lambda_0}$で被覆されている.
+よって, $U_{\lambda_0} \neq \R$として良い.
+このときある有限個の元$n_1, \ldots, n_l$があって$U_{\lambda_{0}} = \R\setminus \{ n_1,\ldots, n_l\}$とかける.
+よって$n_i \in U_{\lambda_i}$となる開集合$U_{\lambda_i}$を取れば, $\R = \cup_{i=0}^{l} U_{\lambda_i}$である.
+
+\newpage
+\begin{center}
+{\Large 2023年度 幾何学基礎2(位相空間論)演義 期末レポート 解答例} \\
+
+\vspace{5pt}
+%{ \large 提出日 2024年月日(火) 15時10分00秒 (日本標準時刻)}
+\end{center}
+
+%\vspace{2pt}
+%\begin{flushleft}
+{% \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8cm} } }
+%\end{flushleft}
+
+%\begin{center}
+ %{\large 各問題の下に答えを書きこの用紙を提出してください. 問題は両面あります.}
+ % \end{center}
+ 
+   {\large 第3問.}  以下$f : X \rightarrow Y$を位相空間の間の連続写像とする. 次の問いに答えよ.
+	\begin{enumerate}
+	\setlength{\parskip}{0cm}
+  	\setlength{\itemsep}{0pt} 
+	\item $f$が単射かつ$Y$がハウスドルフならば, $X$もハウスドルフであることを示せ. 
+	\item $f$が全射かつ$X$が連結ならば, $Y$も連結であることを示せ. 
+	\item $f$が全射かつ$X$がコンパクトならば, $Y$もコンパクトであることを示せ.
+	%\item コンパクト位相空間の閉集合はコンパクトであることを示せ. 
+	\end{enumerate}
+
+\vspace{10pt}
+
+[解答例] 1. $x,y$を相異なる$X$の元とする. 2点$x,y$を分離する$X$の開集合が存在することを示せば良い. 
+
+$f$は単射なので$f(x) \neq f(y)$である.
+$Y$はハウスドルフなので, $Y$の開集合$U, V$で$f(x) \in U$, $f(y) \in V$, $U \cap V = \varnothing$となるものが取れる.
+$f$は連続なので, $f^{-1}(U)$, $f^{-1}(V)$は$X$の開集合である.
+以上より$x \in f^{-1}(U)$, $y \in f^{-1}(V)$, $f^{-1}(U) \cap f^{-1}(V) = \varnothing$であるので, $X$はハウスドルフである.
+
+2. $U$を$Y$の空でない開集合かつ閉集合とする. $U=Y$であることを示せば良い.
+
+$f$は連続なので, $f^{-1}(U)$は$X$の開集合かつ閉集合である.
+$f$は全射なので, $f^{-1}(U)$は空集合ではない.
+よって$X$は連結なので, $f^{-1}(U)=X$である.
+$f$は全射であるので, 
+$$U = f(f^{-1}(U)) = f(X)=Y$$となる.\footnote{$U = f(f^{-1}(U)) $は$f$が全射のときに成り立つ.(一般には成り立たない. なぜなのか考えよ.)}よって$Y$は連結である. 
+
+3. $\{ U_{\lambda}\}_{\lambda \in \Lambda}$を$Y$の開被覆とする.
+ある有限個の元$U_{\lambda_0}, \ldots, U_{\lambda_l}$で$Y$が被覆されることを示せば良い.
+
+$f$は連続なので,  $f^{-1}(U_{\lambda})$は$X$の開集合となり, $\{f^{-1}(U_{\lambda})\}_{\lambda \in \Lambda}$を$X$の開被覆である.
+$X$はコンパクトなので, ある有限個の元$f^{-1}(U_{\lambda_0}), \ldots, f^{-1}(U_{\lambda_l})$があって$X = \cup_{i=0}^{l} f^{-1}(U_{\lambda_i})$となる.
+$f$は全射なので, $f(f^{-1}(U_{\lambda_i}))=U_{\lambda_i}$である.
+よって
+$$Y = f(X) = f\left(\bigcup_{i=0}^{l} f^{-1}(U_{\lambda_i})\right) = \bigcup_{i=0}^{l}f ( f^{-1}(U_{\lambda_i})) = \bigcup_{i=0}^{l}U_{\lambda_i}$$
+である.
+よって$Y$はある有限個の元$U_{\lambda_0}, \ldots, U_{\lambda_l}$で被覆されており, $Y$はコンパクトである.
+\newpage
+
+   {\large 第4問.}   $\R^2$に対し同値関係$\sim$を
+$$
+(x_1, y_1)\sim (x_2, y_2) \Leftrightarrow x_1 - x_2 \in \Z \text{かつ} y_1 - y_2 \in \Z 
+$$
+で定め, 2次元トーラス$T^2 := \R^2/\sim$とする.
+$\pi : \R^2 \rightarrow T^2$という商写像により$T^2$に商位相を入れる.
+次の問いに答えよ. ただし$\R^n$にはユークリッド位相を入れたものを考える. また授業で示した定理や期末レポート第3問の結果を用いて良い. %$T^2$はハウスドルフ空間であることを次の手順で示せ.
+\begin{enumerate}
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $T^2$はコンパクト空間であることを示せ. %連結なコンパクト空間であることを示せ. 
+\item $f : \R^2 \rightarrow S^1 \times S^1$を$f(s,t) = (\cos 2 \pi s, \sin 2 \pi s,\cos 2 \pi t, \sin 2 \pi t)$とする. このときある連続写像$\widetilde{f}: T^2 \rightarrow S^1 \times S^1$で$f = \widetilde{f} \circ \pi $となるものが存在することを示せ. 
+\item $S^1 \times S^1 \subset \R^4$に相対位相を入れる. $S^1 \times S^1$はハウスドルフであることを示せ.
+\item $\widetilde{f}$は全単射であることがわかっている. これを用いて$\widetilde{f}$は同相写像であることを示せ. また$T^2$はハウスドルフ空間であることを示せ.
+  \end{enumerate}
+\vspace{10pt}
+
+[解答例]  1.  %$\R^2$は連結で$\pi : \R^2 \rightarrow T^2$は全射連続写像なので, $T^2$は連結である.
+$[0,1]^2$に$\R^2$の相対位相をいれる. $\pi|_{[0,1]^2} : [0,1]^2 \to T^2$は全射連続写像であることを示す.
+\begin{enumerate}
+\item[全射性] 任意の$t \in T^2$について$\pi(x,y)=t$となる$(x,y) \in \R^2$がある. $z = x - [x], w = y-[y]$とおく. (ただし$[x]$は$x$の整数部分を表す.)　すると$(z,w) \in [0,1]^2$であり, $(x, y) \sim (z,w)$であることから$\pi(z,w) = \pi(x,y)=t$となる. よって$\pi|_{[0,1]^2} : [0,1]^2 \to T^2$は全射である.
+\item[連続性] 包含写像$[0,1]^2 \to \R^2$は連続であり, 商写像$\pi : \R^2\to T^2$は連続であるので, その合成である$\pi|_{[0,1]^2} : [0,1]^2 \to T^2$も連続である.
+\end{enumerate}
+$[0,1]^2$は$\R^2$の有界閉集合であるのでコンパクトである. よって$\pi|_{[0,1]^2} : [0,1]^2 \to T^2$は全射連続写像なので, $T^2$もコンパクトとなる. 
+
+2. $(s,t) \sim (s' , t')$ならば，$f(s,t) = f(s', t')$であることを示す.
+同値関係の定義から, $s-s' =m, t-t' = n$となる$m,n \in \Z$が存在する.
+ よって
+ \begin{align*}
+ \begin{split}
+f(s,t) &= (\cos 2 \pi s, \sin 2 \pi s,\cos 2 \pi t, \sin 2 \pi t) \\
+&=
+(\cos 2 \pi (s' +m), \sin 2 \pi (s' +m),\cos 2 \pi (t' +n), \sin 2 \pi (t' +n)) \\
+&=
+ (\cos 2 \pi s', \sin 2 \pi s',\cos 2 \pi t', \sin 2 \pi t')
+=
+f(s',t')  
+\end{split}
+\end{align*}
+を得る. 以上より商写像の性質から, 連続写像$\widetilde{f}: T^2 = \R^2/\sim \rightarrow S^1 \times S^1$で$f = \widetilde{f} \circ \pi $となるものが存在する. 
+
+3. 包含写像$S^1 \times S^1 \subset \R^4$は単射な連続写像であり, $\R^4$はハウスドルフなので, $S^1 \times S^1$もハウスドルフである.
+
+4. $\widetilde{f}: T^2 \rightarrow S^1 \times S^1$はコンパクト空間からハウスドルフ空間への連続全単射写像であるので同相写像である. また$S^1 \times S^1$がハウスドルフであり, $\widetilde{f}$は単射連続写像なので$T^2$はハウスドルフとなる.\footnote{$\widetilde{f}$が同相であることからでも出る. 同相ならハウスドルフ性・連結性・コンパクト性はうつりあうので(なぜか考えよ.)}
+
+
+  \newpage
+  \begin{center}
+{\Large 2023年度 幾何学基礎2(位相空間論)演義 期末レポート おまけの問題} \\
+
+\vspace{5pt}
+{ \large 提出日 2024年2月6日(火) 15時10分00秒 (日本標準時刻)}
+\end{center}
+
+\vspace{2pt}
+\begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8cm} } }
+\end{flushleft}
+
+この問題は興味本位で作った問題である. 必ずしも全員が提出する必要はなく, 意欲がある人のみ提出してください. 
+なお厳密にチェックしていないため問題文が間違っている可能性もある. その場合は解答用紙にその部分を指摘すること. 
+
+\vspace{5pt}
+問題の下に答えを書きこの用紙を提出してください. 裏面も使用して良い. また解答用紙が足りない場合は, 別途A4サイズの用紙を付け足して良い. その場合はホッチキスで止めること. 
+  
+   
+   
+
+ \vspace{10pt}
+{\large おまけの問題.} 
+2023年12月24日 M1グランプリ決勝戦でのさや香の漫才において「見せ算」というものがあった. 
+この演算の基本的なルールは, $d_{M} : \R \times \R \to \R$として
+$x,y\in \R$について
+$$
+d_M(x,y)= 
+\begin{cases} \max(|x|, |y|)
+& (x\neq y)\\0& (x=y)\end{cases}
+$$
+というものである.\footnote{なおこの演算には他に細かいルールがあるが, 我々は学部生なので大学院の内容には踏み込まず, 基本的なルールでのみ考えることにする. }
+彼らは四則演算として見せ算を定義していたが, 私はこれは四則演算ではなく距離関数として捉えた方が都合がいいのではないかと思った. 
+ 以下の問いに答えよ.
+\begin{enumerate}
+\setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt} 
+  \item $d_{M}$は$\R$の距離関数であることを示せ. 以下$\mathscr{U}_{d_M}$をこの距離$d_{M}$によって導かれる$\R$の位相とする.
+  \item $A := \R \setminus \{ 0\}$とし, $A$に$(\R, \mathscr{U}_{d_M})$の相対位相を入れる. $A$は離散位相空間であることを示せ.
+  \item $\R$のユークリッド位相を$\mathscr{U}_{Euc}$とする. $\mathscr{U}_{d_M}$と$\mathscr{U}_{Euc}$の位相の強弱を判定せよ. 
+  \item $(\R, \mathscr{U}_{d_M})$の連結性・コンパクト性を判定せよ.
+ \item $(\R, \mathscr{U}_{d_M})$の可分性・第一可算性・第二可算性を判定せよ. 
+  \item $(\R, \mathscr{U}_{d_M})$は完備な距離空間であることを示せ. 
+ \item $B := [-1, 1]$とし, $B$に$(\R, \mathscr{U}_{d_M})$の相対位相を入れる. $B$は有界な閉集合であるが, コンパクトではないことを示せ. 
+ \item $(\R, \mathscr{U}_{Euc})$から$(\R, \mathscr{U}_{d_M})$への連続写像を全て求めよ.
+ \item その他思いつく限り, この空間の面白い性質を調べよ.\footnote{上の問題は私が思いついたものをそのまま書いただけである. 私は自分でもわからないものを答えていく感じで問題を作っており, 今までの問題もこのように作った.}
+   \end{enumerate}
+\newpage
+
+    
+  
+ \end{document}
